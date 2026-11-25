@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f8f4" />
+  <meta name="description" content="Gooose — 一隻住進你 Mac 的調皮桌面鵝。牠會追逐游標、拖出迷因和訊息，讓桌面多一點混亂、多一點樂趣。" />
+  <meta property="og:title" content="Gooose — Your Desktop. Their Playground." />
+  <meta property="og:description" content="Meet the goose that doesn't know how to behave. A playful desktop pet for macOS." />
+  <meta property="og:type" content="website" />
+  <title>Gooose — Your Desktop. Their Playground.</title>
+  <style>
+    :root {
+      --paper: #f8f8f4;
+      --paper-2: #eff2ec;
+      --ink: #1d2824;
+      --muted: #69756d;
+      --line: rgba(29, 40, 36, .12);
+      --green: #c7f36b;
+      --green-deep: #a9db4d;
+      --orange: #ff895f;
+      --lavender: #dcd9ff;
+      --blue: #b9dff0;
+      --dark: #17231f;
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --shadow: 0 24px 80px rgba(37, 52, 43, .10);
+      --ease: cubic-bezier(.2,.75,.25,1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    ::selection { background: var(--green); color: var(--ink); }
+    .wrap { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      height: 76px; display: flex; align-items: center;
+      background: rgba(248,248,244,.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(29,40,36,.07);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:28px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; letter-spacing:-.055em; font-size:22px; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:12px; background:var(--green); transform:rotate(-7deg); }
+    .brand-mark svg { width:25px; height:25px; }
+    .nav-links { display:flex; align-items:center; gap:30px; margin-left:auto; color:#68736d; font-size:13px; font-weight:650; }
+    .nav-links a { transition:color .2s ease; }
+    .nav-links a:hover { color:var(--ink); }
+    .nav-cta, .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border:0; border-radius:999px; padding:13px 19px; font-size:13px; font-weight:800;
+      transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s ease;
+      cursor:pointer;
+    }
+    .nav-cta { color:var(--ink); background:var(--green); box-shadow: inset 0 0 0 1px rgba(29,40,36,.05); }
+    .nav-cta:hover, .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 24px rgba(117,151,62,.2); background:#d5ff80; }
+    .arrow { font-size:17px; line-height:0; transition:transform .2s ease; }
+    a:hover .arrow, button:hover .arrow { transform:translate(2px,-2px); }
+    .menu-toggle { display:none; border:1px solid var(--line); background:transparent; border-radius:50%; width:42px; height:42px; }
+
+    /* Hero */
+    .hero { position:relative; padding:78px 0 92px; overflow:hidden; }
+    .hero::before { content:""; position:absolute; width:600px; height:600px; right:-170px; top:-220px; border-radius:50%; background:radial-gradient(circle, rgba(199,243,107,.28), rgba(199,243,107,0) 68%); pointer-events:none; }
+    .hero::after { content:""; position:absolute; width:440px; height:440px; left:-250px; bottom:-250px; border-radius:50%; background:radial-gradient(circle, rgba(220,217,255,.44), transparent 68%); pointer-events:none; }
+    .hero-grid { display:grid; grid-template-columns: .92fr 1.08fr; align-items:center; gap:32px; position:relative; z-index:1; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:#617064; text-transform:uppercase; letter-spacing:.16em; font-size:10px; font-weight:850; }
+    .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:#8cc83c; box-shadow:0 0 0 4px rgba(140,200,60,.13); }
+    h1 { margin:24px 0 20px; font-size:clamp(54px, 7vw, 91px); letter-spacing:-.085em; line-height:.94; font-weight:900; max-width:660px; }
+    h1 .soft { color:#89948b; }
+    h1 .highlight { position:relative; display:inline-block; z-index:0; }
+    h1 .highlight::after { content:""; position:absolute; left:-2px; right:-7px; bottom:3px; height:21%; background:var(--green); z-index:-1; border-radius:8px; transform:rotate(-1.5deg); }
+    .hero-copy { max-width:480px; color:#68736d; font-size:16px; line-height:1.85; margin:0 0 28px; }
+    .hero-actions { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+    .btn-primary { color:var(--ink); background:var(--green); box-shadow:0 8px 24px rgba(117,151,62,.12); padding:16px 22px; }
+    .btn-secondary { color:var(--ink); background:rgba(255,255,255,.72); border:1px solid var(--line); padding:15px 20px; }
+    .btn-secondary:hover { transform:translateY(-3px); background:white; }
+    .hero-meta { display:flex; flex-wrap:wrap; gap:18px; margin-top:30px; color:#7d8780; font-size:11px; font-weight:700; }
+    .hero-meta span { display:inline-flex; align-items:center; gap:7px; }
+    .hero-meta svg { width:14px; height:14px; color:#65736a; }
+    .hero-art { min-height:500px; position:relative; display:grid; place-items:center; }
+    .art-blob { position:absolute; width:min(480px, 92%); aspect-ratio:1; border-radius:47% 53% 57% 43% / 44% 45% 55% 56%; background:linear-gradient(145deg,#e9f7d1 0%,#dff0c6 48%,#d8e8d4 100%); transform:rotate(-9deg); box-shadow:inset 0 0 0 1px rgba(255,255,255,.5), 0 32px 80px rgba(89,119,65,.12); }
+    .art-ring { position:absolute; width:530px; max-width:100%; aspect-ratio:1; border:1px dashed rgba(75,105,68,.25); border-radius:50%; transform:rotate(18deg); }
+    .orbit-dot { position:absolute; width:15px; height:15px; border-radius:50%; background:var(--orange); top:20%; left:20%; box-shadow:0 0 0 8px rgba(255,137,95,.13); animation:orbit 9s linear infinite; }
+    .hero-goose { width:min(530px, 110%); position:relative; z-index:2; filter:drop-shadow(0 30px 20px rgba(42,59,45,.14)); animation:gooseFloat 4.6s ease-in-out infinite; }
+    .hero-goose .wing { transform-origin:280px 315px; animation:wingPulse 3.2s ease-in-out infinite; }
+    .bubble { position:absolute; z-index:3; padding:12px 16px; border-radius:16px; background:rgba(255,255,255,.86); box-shadow:0 12px 35px rgba(44,61,49,.11); backdrop-filter:blur(12px); font-size:11px; font-weight:850; letter-spacing:.01em; animation:bubbleFloat 5s ease-in-out infinite; }
+    .bubble b { color:#91b94a; }
+    .bubble.one { top:14%; right:4%; transform:rotate(5deg); }
+    .bubble.two { left:1%; bottom:18%; animation-delay:-2.4s; transform:rotate(-5deg); }
+    .spark { position:absolute; z-index:1; color:#ff895f; font-size:26px; animation:sparkle 3s ease-in-out infinite; }
+    .spark.s1 { right:11%; top:41%; }
+    .spark.s2 { left:18%; top:20%; color:#9bb85c; font-size:19px; animation-delay:-1s; }
+    .hero-bottom { position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:20px; margin-top:62px; padding-top:22px; border-top:1px solid var(--line); }
+    .micro-label { color:#929b94; font-size:10px; text-transform:uppercase; letter-spacing:.17em; font-weight:800; }
+    .social-proof { display:flex; align-items:center; gap:12px; }
+    .star-chip { display:flex; align-items:center; gap:9px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.62); padding:10px 14px; font-size:12px; font-weight:800; }
+    .star-chip .star { color:#f3ad36; font-size:17px; }
+    .star-chip small { color:#8a938c; font-weight:650; }
+    .version-chip { color:#738075; font-size:11px; font-weight:750; }
+
+    /* Section foundations */
+    section { position:relative; }
+    .section-head { max-width:690px; margin:0 auto 44px; text-align:center; }
+    .section-kicker { color:#879286; text-transform:uppercase; letter-spacing:.18em; font-size:10px; font-weight:850; }
+    h2 { margin:14px 0 13px; font-size:clamp(35px,5vw,58px); line-height:1.02; letter-spacing:-.07em; font-weight:900; }
+    .section-head p { color:var(--muted); font-size:14px; line-height:1.8; margin:0; }
+
+    /* Playground */
+    .playground { padding:100px 0 112px; background:var(--dark); color:white; overflow:hidden; }
+    .playground::before { content:""; position:absolute; width:620px; height:620px; left:-250px; top:-300px; border-radius:50%; background:radial-gradient(circle,rgba(199,243,107,.12),transparent 68%); }
+    .playground .section-kicker { color:#b2c49a; }
+    .playground h2 { color:white; }
+    .playground .section-head p { color:#a0afa5; }
+    .demo-shell { width:min(960px,100%); margin:auto; border:1px solid rgba(255,255,255,.13); border-radius:27px; padding:10px; background:rgba(255,255,255,.06); box-shadow:0 35px 100px rgba(0,0,0,.28); position:relative; z-index:1; }
+    .demo-window { overflow:hidden; border-radius:19px; background:#e8ece4; color:var(--ink); }
+    .window-bar { height:48px; display:flex; align-items:center; gap:8px; padding:0 17px; background:#f8f9f6; border-bottom:1px solid rgba(29,40,36,.08); }
+    .traffic { display:flex; gap:6px; }
+    .traffic i { display:block; width:9px; height:9px; border-radius:50%; background:#ff665d; }
+    .traffic i:nth-child(2){background:#f5bd4f}.traffic i:nth-child(3){background:#55c65a}
+    .window-title { margin:auto; transform:translateX(-16px); font-size:11px; font-weight:800; color:#778179; }
+    .demo-desktop { min-height:370px; position:relative; overflow:hidden; background:linear-gradient(135deg,#d9edc5 0%,#c4e4d8 47%,#c7d9ec 100%); }
+    .desktop-glow { position:absolute; width:370px; height:370px; border-radius:50%; top:-190px; right:-40px; background:rgba(255,255,255,.34); filter:blur(1px); }
+    .desktop-grid { position:absolute; inset:0; opacity:.18; background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px); background-size:38px 38px; mask-image:linear-gradient(to bottom,black,transparent 90%); }
+    .desktop-caption { position:absolute; left:24px; top:20px; color:rgba(29,40,36,.55); font-size:10px; font-weight:850; letter-spacing:.13em; text-transform:uppercase; }
+    .desktop-folder { position:absolute; right:23px; top:21px; display:flex; flex-direction:column; align-items:center; gap:6px; color:rgba(29,40,36,.58); font-size:9px; font-weight:750; }
+    .desktop-folder svg { width:27px; height:27px; filter:drop-shadow(0 3px 3px rgba(0,0,0,.09)); }
+    .demo-goose { position:absolute; left:43%; top:37%; width:176px; height:180px; z-index:3; transform:translate(-50%,-50%); cursor:grab; filter:drop-shadow(0 12px 8px rgba(39,58,45,.16)); transition:left .42s var(--ease), top .42s var(--ease), transform .25s ease; animation:demoBob 3.8s ease-in-out infinite; }
+    .demo-goose:active { cursor:grabbing; }
+    .demo-goose svg { width:100%; height:100%; overflow:visible; }
+    .demo-goose .demo-wing { transform-origin:90px 110px; animation:wingPulse 3.5s ease-in-out infinite; }
+    .demo-goose.chasing { animation:none; }
+    .demo-goose.peck { animation:peck .5s ease; }
+    .demo-goose .mini-shadow { fill:rgba(38,57,45,.14); }
+    .fake-cursor { display:none; position:absolute; z-index:5; width:25px; height:29px; pointer-events:none; filter:drop-shadow(0 2px 2px rgba(0,0,0,.22)); transition:left .08s linear,top .08s linear; }
+    .demo-desktop.is-chasing .fake-cursor { display:block; }
+    .note-card { position:absolute; z-index:4; right:13%; top:17%; width:155px; padding:14px 14px 16px; border-radius:4px 4px 12px 4px; color:#394235; background:#fff1a8; box-shadow:0 15px 25px rgba(44,55,39,.17); transform:rotate(5deg) scale(.92); opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s var(--ease); }
+    .note-card.show { opacity:1; transform:rotate(5deg) scale(1); }
+    .note-card::after { content:""; position:absolute; right:0; bottom:-9px; border-width:9px 0 0 11px; border-style:solid; border-color:transparent transparent transparent #e8d88e; }
+    .note-card small { display:block; font-size:8px; text-transform:uppercase; letter-spacing:.13em; opacity:.55; font-weight:850; margin-bottom:9px; }
+    .note-card strong { font-size:15px; line-height:1.35; display:block; letter-spacing:-.04em; }
+    .demo-status { position:absolute; bottom:15px; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:7px; border:1px solid rgba(255,255,255,.6); background:rgba(255,255,255,.62); backdrop-filter:blur(12px); color:#4f6253; border-radius:999px; padding:8px 12px; font-size:10px; font-weight:750; white-space:nowrap; box-shadow:0 5px 20px rgba(54,74,57,.08); }
+    .demo-status .status-dot { width:6px; height:6px; border-radius:50%; background:#86bd3f; }
+    .demo-controls { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 17px; background:#f8f9f6; }
+    .demo-controls p { color:#849087; font-size:10px; font-weight:700; margin:0; }
+    .control-buttons { display:flex; flex-wrap:wrap; gap:8px; }
+    .demo-btn { border:1px solid rgba(29,40,36,.12); color:#3b4a40; background:white; border-radius:999px; padding:9px 13px; font-size:10px; font-weight:800; cursor:pointer; transition:all .2s ease; }
+    .demo-btn:hover { border-color:#9abf60; background:#f0f8e5; transform:translateY(-2px); }
+    .demo-btn.active { background:var(--green); border-color:var(--green); }
+    .playground-foot { margin:20px auto 0; max-width:750px; display:flex; justify-content:space-between; gap:20px; color:#87988d; font-size:10px; line-height:1.7; }
+    .playground-foot strong { color:#c9d8c8; }
+
+    /* Features */
+    .features { padding:112px 0 118px; }
+    .feature-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .feature-card { min-height:260px; border:1px solid var(--line); border-radius:25px; padding:24px; background:rgba(255,255,255,.52); position:relative; overflow:hidden; transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s ease; }
+    .feature-card:hover { transform:translateY(-7px); background:white; box-shadow:var(--shadow); }
+    .feature-icon { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; margin-bottom:27px; }
+    .feature-icon svg { width:22px; height:22px; }
+    .feature-card h3 { margin:0 0 9px; font-size:17px; letter-spacing:-.045em; }
+    .feature-card p { margin:0; color:#7a867d; font-size:12px; line-height:1.8; }
+    .feature-card .mini-goose-doodle { position:absolute; width:112px; height:112px; right:-11px; bottom:-23px; opacity:.16; transform:rotate(-18deg); }
+    .feature-card:nth-child(1) .feature-icon{background:#e9f4d9;color:#668b39}
+    .feature-card:nth-child(2) .feature-icon{background:#ffe6dc;color:#d86c4b}
+    .feature-card:nth-child(3) .feature-icon{background:#e5e1ff;color:#7770bf}
+    .feature-card:nth-child(4) .feature-icon{background:#deedf4;color:#54849a}
+    .feature-note { margin:26px auto 0; text-align:center; color:#8c968f; font-size:11px; }
+
+    /* Story band */
+    .manifesto { padding:0 0 112px; }
+    .manifesto-card { display:grid; grid-template-columns:1fr .82fr; gap:30px; align-items:center; background:#e9e6ff; border-radius:var(--radius-xl); padding:54px 58px; overflow:hidden; position:relative; }
+    .manifesto-card::before { content:""; position:absolute; width:420px; height:420px; border:1px solid rgba(101,91,168,.12); border-radius:50%; right:8%; top:-220px; box-shadow:0 0 0 35px rgba(255,255,255,.08),0 0 0 70px rgba(255,255,255,.06); }
+    .manifesto h2 { font-size:clamp(36px,5vw,57px); max-width:520px; margin:15px 0; }
+    .manifesto p { color:#6e6a8e; font-size:13px; line-height:1.9; max-width:480px; margin:0; }
+    .manifesto-art { position:relative; min-height:250px; display:grid; place-items:center; z-index:1; }
+    .manifesto-art .goose-svg { width:min(320px,100%); filter:drop-shadow(0 25px 18px rgba(73,66,120,.15)); transform:rotate(5deg); animation:gooseFloat 5s ease-in-out infinite; }
+    .manifesto-sticker { position:absolute; right:0; top:15px; width:86px; height:86px; border-radius:50%; display:grid; place-items:center; text-align:center; background:var(--green); color:#2a3827; font-size:10px; line-height:1.2; font-weight:900; transform:rotate(12deg); box-shadow:0 10px 20px rgba(76,82,49,.12); }
+
+    /* Download */
+    .download { padding:40px 0 100px; }
+    .download-card { position:relative; overflow:hidden; border-radius:34px; color:white; background:#1b2923; padding:64px 68px; display:grid; grid-template-columns:1.12fr .88fr; align-items:center; gap:30px; }
+    .download-card::before { content:""; position:absolute; width:540px; height:540px; right:-130px; bottom:-360px; border-radius:50%; background:radial-gradient(circle,rgba(199,243,107,.2),transparent 68%); }
+    .download-card .section-kicker { color:#a9c18f; }
+    .download-card h2 { color:white; max-width:590px; margin:14px 0 16px; }
+    .download-card p { color:#a2b0a6; max-width:490px; font-size:13px; line-height:1.8; margin:0 0 25px; }
+    .download-actions { display:flex; flex-wrap:wrap; align-items:center; gap:11px; }
+    .download-actions .btn-secondary { color:white; background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.15); }
+    .download-actions .btn-secondary:hover { background:rgba(255,255,255,.15); }
+    .download-side { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:15px; }
+    .download-goose { width:min(320px,100%); filter:drop-shadow(0 20px 23px rgba(0,0,0,.23)); animation:gooseFloat 4.8s ease-in-out infinite; }
+    .download-stats { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .stat-pill { border:1px solid rgba(255,255,255,.16); border-radius:999px; color:#c1cec3; padding:9px 12px; font-size:10px; font-weight:750; background:rgba(255,255,255,.05); }
+    .install-note { margin-top:22px; color:#83968a; font-size:10px; line-height:1.7; max-width:620px; }
+    .install-note a { color:#d3e6c2; text-decoration:underline; text-underline-offset:3px; }
+
+    footer { padding:0 0 35px; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:18px; border-top:1px solid var(--line); padding-top:24px; color:#89938c; font-size:10px; }
+    .footer-brand { display:flex; align-items:center; gap:8px; color:var(--ink); font-size:14px; font-weight:900; letter-spacing:-.04em; }
+    .footer-brand .brand-mark { width:25px; height:25px; border-radius:9px; }
+    .footer-brand .brand-mark svg { width:19px; height:19px; }
+    .footer-links { display:flex; gap:20px; align-items:center; }
+    .footer-links a:hover { color:var(--ink); }
+    .author { color:#59665d; font-weight:800; }
+
+    /* Reveal animations */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .75s var(--ease), transform .75s var(--ease); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .delay-1 { transition-delay:.08s; }.delay-2 { transition-delay:.16s; }.delay-3 { transition-delay:.24s; }
+    @keyframes gooseFloat { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-15px) rotate(1.5deg)} }
+    @keyframes demoBob { 0%,100%{margin-top:0} 50%{margin-top:-8px} }
+    @keyframes wingPulse { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-3deg)} }
+    @keyframes bubbleFloat { 0%,100%{translate:0 0} 50%{translate:0 -9px} }
+    @keyframes sparkle { 0%,100%{transform:scale(.75) rotate(0);opacity:.7} 50%{transform:scale(1.2) rotate(25deg);opacity:1} }
+    @keyframes orbit { from{transform:rotate(0deg) translateX(225px) rotate(0deg)} to{transform:rotate(360deg) translateX(225px) rotate(-360deg)} }
+    @keyframes peck { 0%,100%{transform:translate(-50%,-50%) rotate(0)} 35%{transform:translate(-50%,-42%) rotate(9deg)} 70%{transform:translate(-50%,-50%) rotate(-5deg)} }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns:1fr; gap:0; }
+      .hero-copy { max-width:580px; }
+      .hero-art { min-height:440px; margin-top:0; }
+      .hero-bottom { margin-top:30px; }
+      .feature-grid { grid-template-columns:repeat(2,1fr); }
+      .manifesto-card { padding:42px; }
+      .download-card { padding:48px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width:min(100% - 32px, 1180px); }
+      .topbar { height:66px; }
+      .nav-links { display:none; position:absolute; top:66px; left:0; right:0; padding:18px 22px 22px; background:rgba(248,248,244,.97); border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:18px; }
+      .nav-links.open { display:flex; }
+      .nav-cta { margin-left:auto; padding:11px 14px; font-size:11px; }
+      .menu-toggle { display:grid; place-items:center; }
+      .hero { padding:58px 0 70px; }
+      h1 { font-size:clamp(53px,15vw,76px); }
+      .hero-copy { font-size:14px; }
+      .hero-art { min-height:340px; margin:14px -10px 0; }
+      .art-blob { width:82%; }
+      .art-ring { width:90%; }
+      .hero-goose { width:105%; }
+      .bubble { padding:9px 11px; font-size:9px; }
+      .bubble.one { right:0; top:12%; }.bubble.two { left:0; bottom:12%; }
+      .hero-bottom { align-items:flex-start; flex-direction:column; gap:13px; }
+      .social-proof { flex-wrap:wrap; }
+      .playground, .features { padding:78px 0; }
+      .section-head { margin-bottom:30px; }
+      .demo-shell { padding:6px; border-radius:20px; }
+      .demo-window { border-radius:15px; }
+      .demo-desktop { min-height:300px; }
+      .demo-goose { width:136px; height:142px; }
+      .note-card { right:5%; top:14%; width:126px; padding:11px; }
+      .note-card strong { font-size:12px; }
+      .demo-controls { align-items:flex-start; flex-direction:column; }
+      .control-buttons { width:100%; }
+      .demo-btn { flex:1; min-width:calc(50% - 8px); }
+      .playground-foot { flex-direction:column; gap:5px; }
+      .feature-grid { grid-template-columns:1fr; }
+      .feature-card { min-height:205px; }
+      .feature-icon { margin-bottom:22px; }
+      .manifesto { padding:0 0 75px; }
+      .manifesto-card { grid-template-columns:1fr; gap:0; padding:34px 26px 12px; border-radius:27px; }
+      .manifesto-art { min-height:210px; }
+      .manifesto-art .goose-svg { width:250px; }
+      .manifesto-sticker { width:70px; height:70px; right:3%; top:0; font-size:9px; }
+      .download { padding:15px 0 70px; }
+      .download-card { grid-template-columns:1fr; padding:38px 26px 24px; border-radius:27px; }
+      .download-side { order:-1; }
+      .download-goose { width:205px; }
+      .download-card h2 { font-size:42px; }
+      .footer-inner { align-items:flex-start; flex-direction:column; }
+      .footer-links { flex-wrap:wrap; gap:15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+      .reveal { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Reusable original goose artwork: all illustrations are inline SVG, so this page has no image dependencies. -->
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+    <symbol id="goose-art" viewBox="0 0 560 470">
+      <ellipse class="mini-shadow" cx="276" cy="409" rx="172" ry="23" fill="#aab7a1" opacity=".28"/>
+      <!-- tail -->
+      <path d="M125 300 C86 274 67 247 58 210 C101 229 127 238 159 247Z" fill="#e6e8de"/>
+      <!-- feet -->
+      <path d="M220 373 C218 402 215 420 206 429 L240 429 C246 420 244 400 246 379Z" fill="#f08b58"/>
+      <path d="M329 368 C331 398 342 419 351 429 L385 429 C370 414 362 391 363 365Z" fill="#e8794e"/>
+      <path d="M206 428 L190 439 L242 439 L254 431Z" fill="#e8794e"/>
+      <path d="M351 428 L340 439 L391 439 L386 429Z" fill="#e8794e"/>
+      <!-- body -->
+      <path d="M102 301 C104 244 153 206 225 208 C286 174 391 199 424 271 C454 336 410 388 340 391 L202 390 C136 389 99 356 102 301Z" fill="#fffdf4"/>
+      <path d="M106 309 C137 344 182 347 226 333 C263 322 303 334 341 365 C315 386 276 392 202 390 C143 389 109 360 106 309Z" fill="#e9e9df" opacity=".9"/>
+      <!-- wing -->
+      <path class="wing" d="M134 292 C164 244 224 221 289 239 C327 249 357 276 366 313 C324 339 282 354 234 349 C188 345 151 327 134 292Z" fill="#f2f0e6"/>
+      <path d="M178 284 C213 256 262 253 305 276 C277 301 245 313 205 310 C194 304 184 295 178 284Z" fill="#e2e5d8"/>
+      <!-- neck -->
+      <path d="M307 263 C324 218 332 176 319 138 C305 97 324 61 365 47 C405 34 440 59 439 93 C437 120 415 132 392 130 C390 171 411 215 409 252 C408 275 396 293 377 306Z" fill="#fffdf4"/>
+      <path d="M324 145 C330 100 348 76 378 73 C392 71 404 78 411 89 C398 105 390 116 392 130 C390 172 411 215 409 252 C408 275 396 293 377 306 L334 299 C348 260 349 202 324 145Z" fill="#e9e9df" opacity=".82"/>
+      <!-- head -->
+      <path d="M344 78 C346 42 377 22 414 31 C448 39 463 66 449 94 C438 117 403 128 376 113 C355 102 343 93 344 78Z" fill="#fffdf4"/>
+      <path d="M431 77 C459 75 477 81 499 91 C478 103 458 106 434 103Z" fill="#f08b58"/>
+      <path d="M431 77 C451 81 466 85 481 90 C462 91 447 91 432 89Z" fill="#e4744e" opacity=".7"/>
+      <circle cx="417" cy="70" r="5.7" fill="#25332b"/>
+      <circle cx="419" cy="68" r="1.7" fill="#fff"/>
+      <path d="M397 111 Q413 119 428 108" stroke="#d8d7cc" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8"/>
+      <!-- cheek -->
+      <ellipse cx="397" cy="95" rx="9" ry="5" fill="#f5b09a" opacity=".48"/>
+      <!-- feather accent -->
+      <path d="M159 258 C180 231 214 216 251 218" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".9"/>
+    </symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Gooose 首頁">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 25c1-7 8-9 14-6 2-7 4-11 10-10 5 1 6 7 2 10 4 1 6 3 4 5-4 3-10 2-13 1-5 5-15 7-17 0Z" fill="#fffdf4"/><path d="M31 17l7 2-7 3" fill="#ef895c"/><circle cx="31" cy="14" r="1.4" fill="#243229"/></svg></span>
+        <span>Gooose<span style="color:#94b84c">.</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="主導覽">
+        <a href="#playground">試玩一下</a>
+        <a href="#features">鵝的本領</a>
+        <a href="#about">關於 Gooose</a>
+      </nav>
+      <a class="nav-cta" href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer">下載 Gooose <span class="arrow">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="開啟導覽選單" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <div class="eyebrow"><span class="dot"></span> A tiny desktop troublemaker</div>
+            <h1>Your Desktop.<br><span class="soft">Their</span> <span class="highlight">Playground.</span></h1>
+            <p class="hero-copy">一隻有點調皮、完全不懂界線的鵝，搬進你的 Mac 了。牠會追著游標跑、把迷因拖進桌面，還可能突然留下一張紙條。你的桌面，從此不再無聊。</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer">把鵝帶回家 <span class="arrow">↗</span></a>
+              <a class="btn btn-secondary" href="#playground">先跟牠玩玩 <span class="arrow">↓</span></a>
+            </div>
+            <div class="hero-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg> macOS 原生體驗</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v10H4zM8 17v3m8-3v3M8 4v3m8-3v3"/></svg> Apple Silicon</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.7 6.3L21 11l-6.3 2.7L12 20l-2.7-6.3L3 11l6.3-2.7L12 2Z"/></svg> MIT License</span>
+            </div>
+          </div>
+          <div class="hero-art reveal delay-2" aria-label="抽象風格的 Gooose 鵝插畫">
+            <div class="art-blob"></div><div class="art-ring"></div><div class="orbit-dot"></div>
+            <span class="spark s1">✳</span><span class="spark s2">✦</span>
+            <div class="bubble one">CURRENT MOOD <b>· MISCHIEF</b></div>
+            <div class="bubble two">HONK! HONK! 🪿</div>
+            <svg class="hero-goose" viewBox="0 0 560 470" role="img" aria-label="Gooose 抽象鵝插畫"><use href="#goose-art"/></svg>
+          </div>
+        </div>
+        <div class="hero-bottom reveal">
+          <span class="micro-label">Small goose. Big personality.</span>
+          <div class="social-proof">
+            <a class="star-chip" href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 Gooose 星星數">
+              <span class="star">★</span><span id="starCount">1</span><small>GitHub stars</small>
+            </a>
+            <span class="version-chip">LATEST RELEASE&nbsp; <strong id="versionHero">v2.2.0</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="playground" id="playground">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">A little preview</div>
+          <h2>不相信牠有多調皮？<br>現在就試試看。</h2>
+          <p>這是 Gooose 的網頁小小試玩場。點按下面的按鈕，看看這隻鵝會怎麼搗蛋。</p>
+        </div>
+        <div class="demo-shell reveal delay-1">
+          <div class="demo-window">
+            <div class="window-bar">
+              <div class="traffic"><i></i><i></i><i></i></div>
+              <div class="window-title">Your Mac · Goose activity preview</div>
+            </div>
+            <div class="demo-desktop" id="demoDesktop">
+              <div class="desktop-glow"></div><div class="desktop-grid"></div>
+              <div class="desktop-caption">A quiet day on your desktop...</div>
+              <div class="desktop-folder"><svg viewBox="0 0 32 27" fill="none"><path d="M2 6a3 3 0 013-3h8l3 4h11a3 3 0 013 3v12a3 3 0 01-3 3H5a3 3 0 01-3-3V6Z" fill="#f7d47b" stroke="#d5ae57" stroke-width="1.2"/></svg><span>Important stuff</span></div>
+              <div class="demo-goose" id="demoGoose" role="img" aria-label="可互動的 Gooose 小鵝">
+                <svg viewBox="0 0 560 470" aria-hidden="true"><use href="#goose-art"/></svg>
+              </div>
+              <svg class="fake-cursor" id="fakeCursor" viewBox="0 0 24 30"><path d="M2 1v23l6-6 4 10 4-2-4-9h9L2 1Z" fill="#fff" stroke="#26332c" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <div class="note-card" id="noteCard"><small>✎ a note from Gooose</small><strong id="noteText">你認真工作的樣子，有點好笑。</strong></div>
+              <div class="demo-status"><span class="status-dot"></span><span id="demoStatus">鵝正在觀察你的桌面...</span></div>
+            </div>
+            <div class="demo-controls">
+              <p>CLICK TO CAUSE A LITTLE CHAOS</p>
+              <div class="control-buttons">
+                <button class="demo-btn" id="chaseBtn" type="button">🖱️ 搶走游標</button>
+                <button class="demo-btn" id="noteBtn" type="button">📝 留張紙條</button>
+                <button class="demo-btn" id="addBtn" type="button">🪿 多叫一隻</button>
+                <button class="demo-btn" id="resetBtn" type="button">↺ 重來</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="playground-foot reveal delay-2">
+          <span><strong>小提醒：</strong>這是網頁互動預覽，並非完整桌面程式。</span>
+          <span>真正的鵝可以在你的 macOS 桌面上活動。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-kicker">Meet the troublemaker</div>
+          <h2>牠不是普通的桌面寵物。</h2>
+          <p>從偷走游標到拖出一張迷因，Gooose 專門負責讓你的桌面多一點意外。</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 10-7 1-3 7L5 3Z"/><path d="m13 14 5 6"/></svg></div>
+            <h3>游標？先借我玩。</h3>
+            <p>鵝會追逐、抓住你的游標。工作中的你，可能需要跟牠談判。</p>
+            <svg class="mini-goose-doodle" viewBox="0 0 560 470"><use href="#goose-art"/></svg>
+          </article>
+          <article class="feature-card reveal delay-1">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16v12H8l-4 3V5Z"/><path d="M8 9h8M8 13h5"/></svg></div>
+            <h3>從螢幕外送來的紙條。</h3>
+            <p>看著便條和迷因從螢幕邊緣被拖進桌面，還可以打開編輯。</p>
+            <svg class="mini-goose-doodle" viewBox="0 0 560 470"><use href="#goose-art"/></svg>
+          </article>
+          <article class="feature-card reveal delay-2">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><path d="M2 20c0-3 2.6-5 6-5s6 2 6 5M10 20c0-3 2.6-5 6-5s6 2 6 5"/></svg></div>
+            <h3>鵝多一點，混亂也多一點。</h3>
+            <p>召喚多隻有獨立互動的鵝，讓牠們在你的桌面上各自活動。</p>
+            <svg class="mini-goose-doodle" viewBox="0 0 560 470"><use href="#goose-art"/></svg>
+          </article>
+          <article class="feature-card reveal delay-3">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M3 12h3m12 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <h3>把調皮調成你的樣子。</h3>
+            <p>自訂個性、音效、迷因和惡作劇設定，打造專屬的桌面鵝。</p>
+            <svg class="mini-goose-doodle" viewBox="0 0 560 470"><use href="#goose-art"/></svg>
+          </article>
+        </div>
+        <p class="feature-note">Built for macOS · Made for a little desktop chaos</p>
+      </div>
+    </section>
+
+    <section class="manifesto" id="about">
+      <div class="wrap">
+        <div class="manifesto-card reveal">
+          <div>
+            <div class="section-kicker">Not just another app</div>
+            <h2>讓桌面有一點自己的個性。</h2>
+            <p>Gooose 是一個開源的 macOS 桌面寵物專案。牠不會幫你整理工作，也不會提醒你保持專注——牠只想在你忙碌的一天裡，製造一點值得笑出來的小混亂。</p>
+          </div>
+          <div class="manifesto-art">
+            <div class="manifesto-sticker">100%<br>GOOSE<br>ENERGY</div>
+            <svg class="goose-svg" viewBox="0 0 560 470" role="img" aria-label="Gooose 的抽象鵝插畫"><use href="#goose-art"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="download" id="download">
+      <div class="wrap">
+        <div class="download-card reveal">
+          <div class="download-copy">
+            <div class="section-kicker">Your new desk buddy is waiting</div>
+            <h2>好啦，帶牠回家吧。</h2>
+            <p>只要幾個步驟，就能讓這隻調皮鵝正式入住你的 Mac。準備好迎接一點混亂了嗎？</p>
+            <div class="download-actions">
+              <a class="btn btn-primary" href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer">下載最新版本 <span class="arrow">↗</span></a>
+              <a class="btn btn-secondary" href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer">查看原始碼 <span class="arrow">↗</span></a>
+            </div>
+            <div class="install-note">Apple Silicon（arm64）· macOS 26.0 以上。此版本尚未經 Apple 公證，首次開啟時若出現安全性提示，請依照 <a href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer">Release 頁面的說明</a>允許開啟。</div>
+          </div>
+          <div class="download-side">
+            <svg class="download-goose" viewBox="0 0 560 470" role="img" aria-label="正在等你帶回家的 Gooose"><use href="#goose-art"/></svg>
+            <div class="download-stats"><span class="stat-pill">🪿 Gooose Desktop</span><span class="stat-pill" id="versionBottom">v2.2.0</span><span class="stat-pill">MIT License</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="footer-brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 40 40"><path d="M8 25c1-7 8-9 14-6 2-7 4-11 10-10 5 1 6 7 2 10 4 1 6 3 4 5-4 3-10 2-13 1-5 5-15 7-17 0Z" fill="#fffdf4"/><path d="M31 17l7 2-7 3" fill="#ef895c"/><circle cx="31" cy="14" r="1.4" fill="#243229"/></svg></span>Gooose</a>
+      <span>Made with curiosity, code, and a slightly annoying goose.</span>
+      <div class="footer-links">
+        <a href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer">Releases</a>
+        <a href="https://github.com/li-bao/gooose/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>
+        <span>By <span class="author">Li-bao</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update the star count and latest release when GitHub is reachable.
+    // The verified values below remain visible as a fallback when this file is opened offline.
+    (async function updateGitHubStats() {
+      const repo = 'li-bao/gooose';
+      try {
+        const response = await fetch(`https://api.github.com/repos/${repo}`, {
+          headers: { 'Accept': 'application/vnd.github+json' }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          const stars = document.getElementById('starCount');
+          if (stars && Number.isFinite(data.stargazers_count)) stars.textContent = data.stargazers_count.toLocaleString('en-US');
+        }
+      } catch (_) { /* Keep the last verified fallback value. */ }
+      try {
+        const response = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+          headers: { 'Accept': 'application/vnd.github+json' }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          const tag = data.tag_name || 'v2.2.0';
+          document.getElementById('versionHero').textContent = tag;
+          document.getElementById('versionBottom').textContent = tag;
+        }
+      } catch (_) { /* Keep the current verified release label. */ }
+    })();
+
+    // Scroll reveal: reduced-motion users see all content immediately.
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // Mobile navigation.
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // A small in-browser playground. This is only a preview of the native app.
+    const desktop = document.getElementById('demoDesktop');
+    const mainGoose = document.getElementById('demoGoose');
+    const chaseBtn = document.getElementById('chaseBtn');
+    const noteBtn = document.getElementById('noteBtn');
+    const addBtn = document.getElementById('addBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const noteCard = document.getElementById('noteCard');
+    const noteText = document.getElementById('noteText');
+    const statusText = document.getElementById('demoStatus');
+    const fakeCursor = document.getElementById('fakeCursor');
+    let chasing = false;
+    let extraGeese = [];
+    let noteTimer;
+    let chaseCount = 0;
+    const notes = [
+      '你認真工作的樣子，有點好笑。',
+      '休息一下嘛。HONK！',
+      '這張紙條是我留下的，不用謝。',
+      '我剛剛幫你看過了：還是很忙。',
+      '桌面現在歸我管理了。'
+    ];
+
+    chaseBtn.addEventListener('click', () => {
+      chasing = !chasing;
+      desktop.classList.toggle('is-chasing', chasing);
+      mainGoose.classList.toggle('chasing', chasing);
+      chaseBtn.classList.toggle('active', chasing);
+      if (chasing) {
+        statusText.textContent = '警告：鵝正在追捕你的游標！';
+        chaseBtn.textContent = '🖱️ 停止追捕';
+        mainGoose.style.left = '53%';
+        mainGoose.style.top = '48%';
+      } else {
+        statusText.textContent = '鵝暫時放過你的游標了。';
+        chaseBtn.textContent = '🖱️ 搶走游標';
+        mainGoose.style.left = '43%';
+        mainGoose.style.top = '37%';
+      }
+    });
+
+    desktop.addEventListener('pointermove', (event) => {
+      if (!chasing) return;
+      const rect = desktop.getBoundingClientRect();
+      const x = Math.max(95, Math.min(rect.width - 95, event.clientX - rect.left));
+      const y = Math.max(95, Math.min(rect.height - 90, event.clientY - rect.top));
+      mainGoose.style.left = `${x}px`;
+      mainGoose.style.top = `${y}px`;
+      fakeCursor.style.left = `${x + 14}px`;
+      fakeCursor.style.top = `${y - 15}px`;
+    });
+
+    noteBtn.addEventListener('click', () => {
+      noteText.textContent = notes[Math.floor(Math.random() * notes.length)];
+      noteCard.classList.add('show');
+      statusText.textContent = '鵝趁你不注意，留了一張紙條。';
+      clearTimeout(noteTimer);
+      noteTimer = setTimeout(() => noteCard.classList.remove('show'), 5200);
+      mainGoose.classList.remove('peck');
+      void mainGoose.offsetWidth;
+      mainGoose.classList.add('peck');
+    });
+
+    addBtn.addEventListener('click', () => {
+      if (extraGeese.length >= 3) {
+        statusText.textContent = '這個小小試玩場最多放四隻鵝啦！';
+        return;
+      }
+      const goose = document.createElement('div');
+      goose.className = 'demo-goose extra-goose';
+      goose.setAttribute('role', 'img');
+      goose.setAttribute('aria-label', '另一隻 Gooose');
+      goose.style.width = '115px';
+      goose.style.height = '120px';
+      goose.style.left = `${22 + extraGeese.length * 24}%`;
+      goose.style.top = `${66 - extraGeese.length * 9}%`;
+      goose.style.animationDelay = `${-Math.random() * 2}s`;
+      goose.innerHTML = '<svg viewBox="0 0 560 470" aria-hidden="true"><use href="#goose-art"/></svg>';
+      goose.addEventListener('click', () => {
+        goose.style.transform = 'translate(-50%,-50%) rotate(12deg) scale(1.08)';
+        setTimeout(() => goose.style.transform = 'translate(-50%,-50%)', 240);
+        statusText.textContent = 'HONK！你戳到一隻鵝了。';
+      });
+      desktop.appendChild(goose);
+      extraGeese.push(goose);
+      statusText.textContent = `鵝家族集合中：現在有 ${extraGeese.length + 1} 隻！`;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      chasing = false;
+      desktop.classList.remove('is-chasing');
+      mainGoose.classList.remove('chasing', 'peck');
+      mainGoose.style.left = '43%';
+      mainGoose.style.top = '37%';
+      fakeCursor.style.left = '-40px';
+      fakeCursor.style.top = '-40px';
+      chaseBtn.classList.remove('active');
+      chaseBtn.textContent = '🖱️ 搶走游標';
+      extraGeese.forEach(goose => goose.remove());
+      extraGeese = [];
+      noteCard.classList.remove('show');
+      clearTimeout(noteTimer);
+      statusText.textContent = '鵝正在觀察你的桌面...';
+    });
+  </script>
+</body>
+</html>
