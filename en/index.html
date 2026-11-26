@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-default-lang="en" data-asset-prefix="../">
+<html lang="en" data-default-lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#FFFBF2" id="meta-theme-color" />
-  <title>Gooose — A little chaos on your desktop. | macOS Desktop Pet</title>
-  <meta name="description" content="Meet your new favorite desktop troublemaker. Gooose is an open-source macOS desktop pet by Li-bao with cursor stealing, edge-dragged memes, and Goose Family." />
+  <title>gooose — A little chaos on your desktop. | Your Desktop. Their Playground.</title>
+  <meta name="description" content="A little chaos on your desktop. Your Desktop. Their Playground. gooose is an open-source macOS desktop pet by Li-bao." />
   <link rel="canonical" href="https://gooose.runs-at.dev/en/" />
   <link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/" />
   <link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/" />
   <link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Gooose" />
-  <meta property="og:title" content="Gooose — A little chaos on your desktop." />
-  <meta property="og:description" content="Meet your new favorite desktop troublemaker. Open-source macOS desktop goose by Li-bao." />
+  <meta property="og:site_name" content="gooose" />
+  <meta property="og:title" content="gooose — A little chaos on your desktop." />
+  <meta property="og:description" content="Your Desktop. Their Playground. Open-source macOS desktop goose by Li-bao." />
   <meta property="og:url" content="https://gooose.runs-at.dev/en/" />
   <meta property="og:image" content="https://gooose.runs-at.dev/assets/screenshot-macos.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -37,1103 +37,23 @@
       }
     })();
   </script>
-
-  <style>
-    :root {
-      --bg: #FFFBF2;
-      --bg-soft: #F7EFE0;
-      --surface: #FFFFFF;
-      --surface-alt: #FDF6E8;
-      --ink: #2B201A;
-      --muted: #6B584C;
-      --line: rgba(43, 32, 26, 0.12);
-      --line-strong: rgba(43, 32, 26, 0.22);
-      --yellow: #F6C945;
-      --yellow-soft: #FDEAA8;
-      --orange: #F27D3B;
-      --orange-deep: #D96424;
-      --coffee: #3D2B22;
-      --mint: #5CB882;
-      --shadow-sm: 0 4px 14px rgba(43, 32, 26, 0.06);
-      --shadow-md: 0 14px 36px rgba(43, 32, 26, 0.09);
-      --shadow-lg: 0 24px 56px rgba(43, 32, 26, 0.13);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --radius-pill: 999px;
-      --nav-bg: rgba(255, 251, 242, 0.88);
-      --code-bg: #F3E9D6;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    html[data-theme="dark"] {
-      --bg: #191310;
-      --bg-soft: #221A16;
-      --surface: #271E19;
-      --surface-alt: #30251F;
-      --ink: #F7EFE2;
-      --muted: #BCA99A;
-      --line: rgba(247, 239, 226, 0.12);
-      --line-strong: rgba(247, 239, 226, 0.24);
-      --yellow: #F6C945;
-      --yellow-soft: rgba(246, 201, 69, 0.18);
-      --orange: #FF9254;
-      --orange-deep: #F27D3B;
-      --coffee: #F7EFE2;
-      --mint: #6FD196;
-      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.25);
-      --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.36);
-      --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.45);
-      --nav-bg: rgba(25, 19, 16, 0.88);
-      --code-bg: #1E1612;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang TC", "Noto Sans TC", "Segoe UI", Roboto, sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; cursor: pointer; }
-    img { max-width: 100%; display: block; }
-    code, pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--orange);
-      outline-offset: 3px;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: 16px;
-      top: -60px;
-      z-index: 999;
-      padding: 10px 16px;
-      background: var(--yellow);
-      color: #2B201A;
-      font-weight: 700;
-      border-radius: var(--radius-pill);
-      transition: top 0.2s var(--ease);
-    }
-    .skip-link:focus { top: 14px; }
-
-    .wrap {
-      width: min(1160px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 72px 0;
-    }
-
-    .section-head {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 34px;
-      max-width: 720px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      background: var(--yellow-soft);
-      color: #2B201A;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-    html[data-theme="dark"] .eyebrow {
-      color: var(--yellow);
-      border: 1px solid rgba(246, 201, 69, 0.35);
-    }
-
-    h1, h2, h3, h4 {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang TC", "Noto Sans TC", sans-serif;
-      letter-spacing: -0.02em;
-      line-height: 1.18;
-    }
-
-    h2.section-title {
-      font-size: clamp(1.85rem, 3.2vw, 2.55rem);
-      font-weight: 800;
-    }
-
-    .section-desc {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: var(--radius-pill);
-      border: 2px solid transparent;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background-color 0.18s var(--ease), border-color 0.18s var(--ease);
-    }
-    .btn:hover:not(:disabled) { transform: translateY(-2px); }
-    .btn:active:not(:disabled) { transform: translateY(0); }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .btn-primary {
-      background: var(--yellow);
-      color: #2B201A;
-      border-color: #2B201A;
-      box-shadow: 0 4px 0 #2B201A;
-    }
-    .btn-primary:hover:not(:disabled) {
-      background: #FAD45B;
-      box-shadow: 0 6px 0 #2B201A;
-    }
-    html[data-theme="dark"] .btn-primary {
-      border-color: var(--yellow);
-      box-shadow: 0 4px 0 rgba(246, 201, 69, 0.35);
-    }
-
-    .btn-accent {
-      background: var(--orange);
-      color: #FFFFFF;
-      border-color: transparent;
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-accent:hover:not(:disabled) { background: var(--orange-deep); }
-
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--ink);
-      border-color: var(--line-strong);
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-secondary:hover:not(:disabled) { border-color: var(--orange); }
-
-    .btn-sm { padding: 8px 14px; font-size: 0.86rem; }
-
-    /* Navbar */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      min-height: 70px;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 1.18rem;
-      letter-spacing: -0.02em;
-      flex-shrink: 0;
-    }
-    .brand-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: var(--yellow);
-      border: 2px solid #2B201A;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 3px 0 #2B201A;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      padding: 7px 11px;
-      border-radius: var(--radius-pill);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--muted);
-      transition: background-color 0.16s, color 0.16s;
-    }
-    .nav-links a:hover, .nav-links a:focus-visible {
-      background: var(--bg-soft);
-      color: var(--ink);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .pill-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      border: 1px solid var(--line-strong);
-      font-size: 0.84rem;
-      font-weight: 700;
-      box-shadow: var(--shadow-sm);
-    }
-    .pill-switch:hover { border-color: var(--orange); }
-
-    .mobile-menu-btn {
-      display: none;
-      padding: 8px 12px;
-      border-radius: 12px;
-      background: var(--surface);
-      border: 1px solid var(--line-strong);
-      font-weight: 700;
-    }
-
-    .mobile-drawer {
-      display: none;
-      padding: 12px 20px 20px;
-      border-top: 1px solid var(--line);
-      background: var(--bg);
-    }
-    .mobile-drawer.open { display: block; }
-    .mobile-drawer ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-    }
-    .mobile-drawer a {
-      display: block;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      font-weight: 600;
-      font-size: 0.92rem;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 56px 0 64px;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
-      align-items: center;
-    }
-    .hero-title {
-      font-size: clamp(2.25rem, 4.5vw, 3.6rem);
-      font-weight: 900;
-      margin-top: 14px;
-      margin-bottom: 14px;
-    }
-    .hero-subtitle {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      font-weight: 700;
-      color: var(--orange-deep);
-      margin: 0 0 14px;
-    }
-    html[data-theme="dark"] .hero-subtitle { color: var(--orange); }
-    .hero-lead {
-      margin: 0 0 24px;
-      color: var(--muted);
-      font-size: 1.04rem;
-      max-width: 58ch;
-    }
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .stat-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      font-size: 0.88rem;
-      font-weight: 700;
-      box-shadow: var(--shadow-sm);
-    }
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .hero-card {
-      position: relative;
-      background: var(--surface);
-      border: 2px solid var(--line-strong);
-      border-radius: var(--radius-xl);
-      padding: 28px 24px 22px;
-      box-shadow: var(--shadow-lg);
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 10px;
-      background: repeating-linear-gradient(90deg, var(--yellow) 0 28px, var(--orange) 28px 56px);
-    }
-    .hero-mascot-stage {
-      height: 240px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-    .hero-goose-svg {
-      width: 190px;
-      height: 190px;
-      animation: heroFloat 3.6s ease-in-out infinite;
-      filter: drop-shadow(0 14px 18px rgba(43, 32, 26, 0.14));
-    }
-    .hero-shadow {
-      width: 110px;
-      height: 16px;
-      border-radius: 50%;
-      background: rgba(43, 32, 26, 0.12);
-      margin: -18px auto 12px;
-      animation: shadowPulse 3.6s ease-in-out infinite;
-    }
-    .hero-card-note {
-      display: inline-block;
-      padding: 9px 15px;
-      border-radius: 14px;
-      background: var(--surface-alt);
-      border: 1px dashed var(--line-strong);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    @keyframes heroFloat {
-      0%, 100% { transform: translateY(0) rotate(-1deg); }
-      50% { transform: translateY(-10px) rotate(2deg); }
-    }
-    @keyframes shadowPulse {
-      0%, 100% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(0.86); opacity: 0.45; }
-    }
-
-    /* Cards Grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--yellow);
-    }
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: var(--bg-soft);
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      margin-bottom: 14px;
-      border: 1px solid var(--line);
-    }
-    .card h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* Interactive Goose Playground */
-    .playground-shell {
-      background: var(--surface);
-      border: 2px solid var(--line-strong);
-      border-radius: var(--radius-xl);
-      padding: 22px;
-      box-shadow: var(--shadow-md);
-    }
-    .playground-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .toolbar-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-    .arena {
-      position: relative;
-      height: 420px;
-      border-radius: var(--radius-lg);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(246, 201, 69, 0.14), transparent 45%),
-        radial-gradient(circle at 82% 75%, rgba(242, 125, 59, 0.12), transparent 45%),
-        var(--surface-alt);
-      border: 2px dashed var(--line-strong);
-      overflow: hidden;
-      touch-action: none;
-      user-select: none;
-    }
-    .arena-floor {
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 54px;
-      background: linear-gradient(to top, rgba(43, 32, 26, 0.06), transparent);
-      pointer-events: none;
-    }
-    .arena-hint {
-      position: absolute;
-      top: 12px;
-      left: 14px;
-      z-index: 2;
-      padding: 5px 11px;
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--muted);
-      pointer-events: none;
-    }
-    .arena-count {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      z-index: 2;
-      padding: 5px 11px;
-      border-radius: var(--radius-pill);
-      background: var(--yellow-soft);
-      color: #2B201A;
-      font-size: 0.8rem;
-      font-weight: 800;
-      pointer-events: none;
-    }
-
-    .goose-actor {
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: grab;
-      touch-action: none;
-      z-index: 5;
-      border-radius: 18px;
-      transition: filter 0.15s;
-    }
-    .goose-actor:focus-visible {
-      outline: 3px solid var(--orange);
-      outline-offset: 2px;
-    }
-    .goose-actor[data-state="DRAGGING"] {
-      cursor: grabbing;
-      z-index: 20;
-      filter: drop-shadow(0 16px 18px rgba(43, 32, 26, 0.25));
-    }
-    .goose-sprite-wrap {
-      width: 84px;
-      height: 84px;
-      transform-origin: center bottom;
-      will-change: transform;
-    }
-    .goose-actor[data-dir="-1"] .goose-sprite-wrap svg {
-      transform: scaleX(-1);
-    }
-    .goose-name-tag {
-      margin-top: -4px;
-      padding: 2px 8px;
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      font-size: 0.72rem;
-      font-weight: 800;
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .goose-bubble {
-      position: absolute;
-      bottom: 98px;
-      left: 50%;
-      transform: translateX(-50%);
-      min-width: 140px;
-      max-width: 220px;
-      padding: 8px 12px;
-      border-radius: 14px;
-      background: var(--surface);
-      color: var(--ink);
-      border: 2px solid var(--ink);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      pointer-events: none;
-      z-index: 30;
-      animation: bubblePop 0.2s var(--ease);
-    }
-    .goose-zzz {
-      position: absolute;
-      top: -6px;
-      right: 4px;
-      font-size: 0.85rem;
-      font-weight: 900;
-      color: var(--orange);
-      pointer-events: none;
-      animation: zzzFloat 1.6s ease-in-out infinite;
-    }
-
-    /* Goose State Animations */
-    .goose-actor[data-state="IDLE"] .goose-sprite-wrap {
-      animation: gooseIdle 2.8s ease-in-out infinite;
-    }
-    .goose-actor[data-state="WALKING"] .goose-sprite-wrap {
-      animation: gooseWalk 0.42s ease-in-out infinite;
-    }
-    .goose-actor[data-state="SLEEPING"] .goose-sprite-wrap {
-      animation: gooseSleep 2.6s ease-in-out infinite;
-      opacity: 0.92;
-    }
-    .goose-actor[data-state="JUMPING"] .goose-sprite-wrap {
-      animation: gooseJump 0.55s cubic-bezier(0.25, 1.4, 0.5, 1);
-    }
-    .goose-actor[data-state="EATING"] .goose-sprite-wrap {
-      animation: gooseEat 0.34s ease-in-out infinite;
-    }
-    .goose-actor[data-state="DRAGGING"] .goose-sprite-wrap {
-      transform: rotate(-8deg) scale(1.06);
-    }
-
-    @keyframes gooseIdle {
-      0%, 100% { transform: translateY(0) scaleY(1); }
-      50% { transform: translateY(-2px) scaleY(0.98); }
-    }
-    @keyframes gooseWalk {
-      0%, 100% { transform: translateY(0) rotate(-3deg); }
-      50% { transform: translateY(-5px) rotate(3deg); }
-    }
-    @keyframes gooseSleep {
-      0%, 100% { transform: translateY(4px) scaleY(0.92); }
-      50% { transform: translateY(6px) scaleY(0.89); }
-    }
-    @keyframes gooseJump {
-      0% { transform: translateY(0) scale(1); }
-      45% { transform: translateY(-42px) scale(1.06); }
-      100% { transform: translateY(0) scale(1); }
-    }
-    @keyframes gooseEat {
-      0%, 100% { transform: rotate(0deg) translateY(0); }
-      50% { transform: rotate(16deg) translateY(5px); }
-    }
-    @keyframes zzzFloat {
-      0%, 100% { transform: translateY(0); opacity: 0.5; }
-      50% { transform: translateY(-8px); opacity: 1; }
-    }
-    @keyframes bubblePop {
-      from { opacity: 0; transform: translateX(-50%) translateY(6px) scale(0.92); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-    }
-
-    .food-drop {
-      position: absolute;
-      font-size: 1.6rem;
-      pointer-events: none;
-      z-index: 4;
-      animation: bubblePop 0.25s var(--ease);
-    }
-
-    .playground-footer {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-    .family-roster {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .roster-chip {
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    /* Gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-    .media-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    .media-thumb-btn {
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      text-align: left;
-      position: relative;
-    }
-    .media-thumb-btn img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      transition: transform 0.3s var(--ease);
-    }
-    .media-thumb-btn:hover img { transform: scale(1.02); }
-    .media-caption {
-      padding: 16px 20px;
-      border-top: 1px solid var(--line);
-    }
-    .media-caption h3 { font-size: 1.05rem; margin-bottom: 4px; }
-    .media-caption p { margin: 0; font-size: 0.9rem; color: var(--muted); }
-
-    .missing-media-panel {
-      background: var(--surface);
-      border: 1px dashed var(--line-strong);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-    }
-    .missing-media-panel h3 { font-size: 1.08rem; margin-bottom: 8px; }
-    .missing-list {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      display: grid;
-      gap: 8px;
-    }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 500;
-      background: rgba(20, 15, 12, 0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-dialog {
-      position: relative;
-      max-width: min(1040px, 95vw);
-      max-height: 90vh;
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 16px;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .lightbox-dialog img, .lightbox-dialog video {
-      max-height: 75vh;
-      width: auto;
-      max-width: 100%;
-      border-radius: 12px;
-      margin-inline: auto;
-    }
-    .lightbox-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Download Center */
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 22px;
-    }
-    .download-box {
-      background: var(--surface);
-      border: 2px solid var(--line-strong);
-      border-radius: var(--radius-xl);
-      padding: 28px;
-      box-shadow: var(--shadow-md);
-    }
-    .dl-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 14px 0 18px;
-    }
-    .dl-badge {
-      padding: 6px 12px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    .dl-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 18px 0;
-    }
-    .sha-box {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      background: var(--code-bg);
-      border: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 0.82rem;
-    }
-    .sha-box code {
-      word-break: break-all;
-      font-weight: 600;
-    }
-    .notice-box {
-      margin-top: 18px;
-      padding: 16px;
-      border-radius: var(--radius-md);
-      background: var(--yellow-soft);
-      color: #2B201A;
-      border: 1px solid rgba(43, 32, 26, 0.2);
-      font-size: 0.9rem;
-    }
-    html[data-theme="dark"] .notice-box {
-      color: var(--ink);
-      border-color: rgba(246, 201, 69, 0.35);
-    }
-    .notice-box pre {
-      margin: 8px 0 0;
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: rgba(43, 32, 26, 0.08);
-      overflow-x: auto;
-      font-size: 0.82rem;
-    }
-    html[data-theme="dark"] .notice-box pre {
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .api-status-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 18px;
-      padding: 10px 16px;
-      border-radius: var(--radius-md);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      font-size: 0.86rem;
-    }
-
-    /* Docs Tabs */
-    .docs-shell {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 20px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-    .docs-tabs {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .doc-tab-btn {
-      text-align: left;
-      padding: 11px 14px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      background: transparent;
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-    .doc-tab-btn:hover { background: var(--bg-soft); color: var(--ink); }
-    .doc-tab-btn[aria-selected="true"] {
-      background: var(--yellow);
-      color: #2B201A;
-      border-color: #2B201A;
-    }
-    .docs-panel {
-      padding: 8px 12px;
-      min-height: 280px;
-    }
-    .docs-panel h3 { font-size: 1.35rem; margin-bottom: 12px; }
-    .docs-panel ul { padding-left: 20px; margin: 10px 0; }
-    .docs-panel li { margin-bottom: 6px; color: var(--muted); }
-    .docs-panel strong { color: var(--ink); }
-    .docs-panel pre {
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: var(--code-bg);
-      overflow-x: auto;
-      font-size: 0.85rem;
-    }
-
-    /* FAQ Accordion */
-    .faq-list {
-      display: grid;
-      gap: 12px;
-    }
-    .faq-item {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-    .faq-trigger {
-      width: 100%;
-      padding: 18px 20px;
-      border: 0;
-      background: transparent;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      text-align: left;
-      font-weight: 800;
-      font-size: 1rem;
-    }
-    .faq-trigger:hover { background: var(--bg-soft); }
-    .faq-icon {
-      flex-shrink: 0;
-      font-size: 1.2rem;
-      transition: transform 0.2s var(--ease);
-    }
-    .faq-trigger[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
-    .faq-panel {
-      padding: 0 20px 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .faq-panel[hidden] { display: none; }
-
-    /* Changelog */
-    .changelog-list {
-      display: grid;
-      gap: 18px;
-    }
-    .release-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      box-shadow: var(--shadow-sm);
-    }
-    .release-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .release-tag {
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      background: var(--yellow);
-      color: #2B201A;
-      font-weight: 800;
-      font-size: 0.86rem;
-    }
-    .release-lang-note {
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--muted);
-    }
-    .release-body-raw {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 12px;
-      background: var(--code-bg);
-      white-space: pre-wrap;
-      font-size: 0.85rem;
-      color: var(--ink);
-      max-height: 260px;
-      overflow-y: auto;
-    }
-
-    /* Security & Privacy */
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .policy-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-    }
-    .policy-card h3 { font-size: 1.16rem; margin-bottom: 12px; }
-    .policy-card ul {
-      margin: 0;
-      padding-left: 18px;
-      display: grid;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-    .policy-card strong { color: var(--ink); }
-
-    /* Footer */
-    footer {
-      margin-top: 40px;
-      padding: 44px 0;
-      border-top: 1px solid var(--line);
-      background: var(--bg-soft);
-    }
-    .footer-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-    .footer-links a:hover { color: var(--ink); }
-
-    /* Responsive */
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .mobile-menu-btn { display: inline-flex; }
-      .hero-grid, .download-grid, .gallery-grid, .docs-shell {
-        grid-template-columns: 1fr;
-      }
-      .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .docs-tabs {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 6px;
-      }
-      .doc-tab-btn { white-space: nowrap; }
-    }
-
-    @media (max-width: 640px) {
-      .section { padding: 52px 0; }
-      .cards-grid, .two-col { grid-template-columns: 1fr; }
-      .arena { height: 360px; }
-      .wrap { width: min(1160px, calc(100% - 28px)); }
-      .nav-inner { gap: 8px; min-height: 62px; }
-      .brand { font-size: 1.04rem; gap: 7px; }
-      .brand-badge { width: 32px; height: 32px; border-radius: 10px; }
-      .brand-badge svg { width: 20px; height: 20px; }
-      .nav-actions { gap: 5px; }
-      .pill-switch { padding: 6px 9px; font-size: 0.78rem; gap: 4px; }
-      .mobile-menu-btn { padding: 6px 10px; font-size: 0.8rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main-content" data-i18n="skip">跳至主要內容</a>
 
+  <div class="loading-goose-pill hidden" id="loading-goose-pill" role="status" aria-live="polite">
+    <span aria-hidden="true">🪿</span>
+    <span data-i18n="loading.pill">gooose 正在搬運 GitHub 資料…</span>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <header class="topbar">
     <div class="wrap nav-inner">
-      <a class="brand" href="#home" aria-label="Gooose Home">
+      <a class="brand" href="#home" id="brand-logo" aria-label="gooose Home">
         <span class="brand-badge" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+          <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
             <path d="M16 46c0-9 5-14 11-16V18c0-5 4-9 9-9s8 3.5 8 7.5c0 2.5-1.4 4.5-3.4 5.5l6.4 2.2c1.5.5 1.5 2.6 0 3.1l-6.6 2.1c-.4 5.5-2.6 10.6-7.4 14.6-4.5 3.7-17 3.7-17 0z" fill="#FFFFFF" stroke="#2B201A" stroke-width="4" stroke-linejoin="round"/>
             <path d="M41 21.5l8 2.5-8 2.5z" fill="#F27D3B" stroke="#2B201A" stroke-width="2.5" stroke-linejoin="round"/>
             <circle cx="37" cy="16.5" r="2.5" fill="#2B201A"/>
@@ -1145,24 +65,27 @@
       <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="#home" data-i18n="nav.home">首頁</a></li>
-          <li><a href="#features" data-i18n="nav.features">功能特色</a></li>
-          <li><a href="#playground" data-i18n="nav.playground">互動遊樂場</a></li>
-          <li><a href="#gallery" data-i18n="nav.gallery">畫面展示</a></li>
+          <li><a href="#features" data-i18n="nav.features">特色</a></li>
+          <li><a href="#playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
+          <li><a href="#games" data-i18n="nav.games">小遊戲</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">畫面</a></li>
           <li><a href="#download" data-i18n="nav.download">下載</a></li>
           <li><a href="#docs" data-i18n="nav.docs">文件</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">常見問題</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
           <li><a href="#changelog" data-i18n="nav.changelog">更新日誌</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
+        <button type="button" class="pill-switch" id="cursor-switch" aria-pressed="true" title="Toggle Goose Cursor">🪿</button>
+        <button type="button" class="pill-switch" id="sound-switch" aria-pressed="false" title="Toggle Sound">🔇</button>
+        <button type="button" class="pill-switch" id="motion-switch" aria-pressed="false" title="Toggle Reduced Motion">✨</button>
         <button type="button" class="pill-switch" id="lang-switch" aria-label="Switch language">
-          <span aria-hidden="true">🌐</span>
           <span id="lang-switch-label">EN</span>
         </button>
         <button type="button" class="pill-switch" id="theme-switch" aria-label="Switch theme">
           <span id="theme-icon" aria-hidden="true">🖥️</span>
-          <span id="theme-label">跟隨系統</span>
+          <span id="theme-label">系統</span>
         </button>
         <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-drawer" data-i18n="nav.menu">選單</button>
       </div>
@@ -1171,12 +94,13 @@
     <div class="mobile-drawer" id="mobile-drawer">
       <ul>
         <li><a href="#home" data-i18n="nav.home">首頁</a></li>
-        <li><a href="#features" data-i18n="nav.features">功能特色</a></li>
-        <li><a href="#playground" data-i18n="nav.playground">互動遊樂場</a></li>
-        <li><a href="#gallery" data-i18n="nav.gallery">畫面展示</a></li>
+        <li><a href="#features" data-i18n="nav.features">特色</a></li>
+        <li><a href="#playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
+        <li><a href="#games" data-i18n="nav.games">小遊戲</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">畫面</a></li>
         <li><a href="#download" data-i18n="nav.download">下載</a></li>
         <li><a href="#docs" data-i18n="nav.docs">文件</a></li>
-        <li><a href="#faq" data-i18n="nav.faq">常見問題</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
         <li><a href="#changelog" data-i18n="nav.changelog">更新日誌</a></li>
       </ul>
     </div>
@@ -1189,38 +113,34 @@
         <div>
           <span class="eyebrow" data-i18n="hero.eyebrow">macOS Apple Silicon · 開源桌面寵物</span>
           <h1 class="hero-title" data-i18n="hero.title">給你的桌面添一點可愛混亂。</h1>
-          <p class="hero-subtitle" data-i18n="hero.subtitle">認識你最愛的新桌面搗蛋鬼。</p>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">你的桌面，牠們的遊樂場。</p>
           <p class="hero-lead" data-i18n="hero.lead">
-            Gooose 是一款由 Li-bao 開發的原生 macOS 桌面寵物。牠會在螢幕上散步、搶走你的滑鼠游標、從螢幕邊緣拖出迷因圖片和便利貼，甚至帶著最多 5 隻鵝夥伴一起在你的 Mac 上開派對。
+            gooose 是由 Li-bao 開發的原生 macOS 桌面寵物。牠會在螢幕上散步、搶走你的滑鼠游標、從螢幕邊緣拖出迷因與便利貼，並支援最多 5 隻鵝的 Goose Family。
           </p>
 
           <div class="hero-stats">
-            <span class="stat-pill">⭐ <span data-i18n="hero.starsLabel">GitHub Stars：</span><strong id="hero-stars">讀取中…</strong></span>
-            <span class="stat-pill">🏷️ <span data-i18n="hero.versionLabel">最新版本：</span><strong id="hero-version">讀取中…</strong></span>
-            <span class="stat-pill">💻 <span data-i18n="hero.platform">Apple Silicon · macOS 26+</span></span>
+            <span class="stat-pill">⭐ <span data-i18n="hero.starsLabel">Stars：</span><strong id="hero-stars">…</strong></span>
+            <span class="stat-pill">🍴 <span data-i18n="hero.forksLabel">Forks：</span><strong id="hero-forks">…</strong></span>
+            <span class="stat-pill">📦 <span data-i18n="hero.releasesLabel">Releases：</span><strong id="hero-releases-count">…</strong></span>
+            <span class="stat-pill">🏷️ <span data-i18n="hero.versionLabel">最新版本：</span><strong id="hero-version">…</strong></span>
           </div>
 
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#download" data-i18n="hero.ctaDownload">立即下載 Gooose</a>
-            <a class="btn btn-accent" href="#playground" data-i18n="hero.ctaPlay">在網頁試玩小鵝</a>
-            <a class="btn btn-secondary" href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaGithub">查看 GitHub</a>
+            <a class="btn btn-primary" href="#download" data-i18n="hero.ctaDownload">下載 gooose</a>
+            <a class="btn btn-accent" href="#features" data-i18n="hero.ctaFeatures">探索特色</a>
+            <a class="btn btn-secondary" href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaGithub">GitHub 專案</a>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="hero-mascot-stage">
-            <svg class="hero-goose-svg" viewBox="0 0 180 180" fill="none" aria-label="Gooose Mascot">
-              <ellipse cx="75" cy="126" rx="44" ry="28" fill="#FFFFFF" stroke="#2B201A" stroke-width="5"/>
-              <path d="M98 114c4-24 2-48 4-62 2-12 12-19 23-17 10 2 15 11 13 20-2 8-9 12-15 13-2 16-3 36-8 50" fill="#FFFFFF" stroke="#2B201A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M52 118c-12 2-20 11-16 18 4 6 18 5 28 0" fill="#FDF6E8" stroke="#2B201A" stroke-width="4.5" stroke-linecap="round"/>
-              <path d="M134 52l22 7-22 8z" fill="#F27D3B" stroke="#2B201A" stroke-width="4" stroke-linejoin="round"/>
-              <circle cx="122" cy="48" r="4.2" fill="#2B201A"/>
-              <circle cx="128" cy="57" r="4.5" fill="#F27D3B" opacity="0.35"/>
-              <path d="M64 152v14m0 0l-9 4m9-4l7 4M90 152v14m0 0l-9 4m9-4l7 4" stroke="#F27D3B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <div class="hero-stage-card">
+          <div class="hero-canvas-wrap">
+            <canvas id="hero-goose-canvas" aria-label="Animated Hero Goose"></canvas>
+            <span class="hero-bump-badge" id="hero-bump-badge">🪿 gooose</span>
           </div>
-          <div class="hero-shadow" aria-hidden="true"></div>
-          <div class="hero-card-note" data-i18n="hero.note">「嘎！你的游標現在歸我管了。」</div>
+          <div class="hero-stage-footer">
+            <span data-i18n="hero.stageHint">點擊舞台中的 gooose，牠會跳起來並對游標做出反應！</span>
+            <span>Apple Silicon · macOS 26+</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1229,50 +149,137 @@
     <section class="section" id="features">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow" data-i18n="features.eyebrow">核心特色</span>
-          <h2 class="section-title" data-i18n="features.title">為什麼你的桌面需要一隻鵝？</h2>
-          <p class="section-desc" data-i18n="features.desc">以 Swift、SwiftUI、AppKit 與 SpriteKit 原生打造，兼具流暢手感與豐富惡作劇系統。</p>
+          <span class="eyebrow" data-i18n="features.eyebrow">互動功能特色</span>
+          <h2 class="section-title" data-i18n="features.title">一隻真的住在你電腦裡的鵝</h2>
+          <p class="section-desc" data-i18n="features.desc">以 Swift、SwiftUI、AppKit 與 SpriteKit 原生打造。點擊或滑過下方卡片預覽 gooose 行為。</p>
         </div>
-
         <div class="cards-grid" id="features-grid"></div>
       </div>
     </section>
 
-    <!-- Interactive Goose Playground & Goose Family -->
+    <!-- Playground 2.0 -->
     <section class="section" id="playground">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow" data-i18n="playground.eyebrow">網頁互動體驗</span>
-          <h2 class="section-title" data-i18n="playground.title">Interactive Goose &amp; Goose Family</h2>
-          <p class="section-desc" data-i18n="playground.desc">直接點擊、拖曳或餵食網頁裡的小鵝！最多可同時加入 5 隻擁有獨立狀態的鵝。</p>
+          <span class="eyebrow" data-i18n="pg.eyebrow">物理互動沙盒</span>
+          <h2 class="section-title" data-i18n="pg.title">Goose Playground 2.0</h2>
+          <p class="section-desc" data-i18n="pg.desc">具備重力、拋擲動量、碰撞偵測、5 種食物、4 種性格與 5 種遊戲模式的實體 Canvas 遊樂場！</p>
         </div>
 
         <div class="playground-shell">
-          <div class="playground-toolbar">
+          <div class="pg-hud">
+            <div class="pg-hud-stats">
+              <span class="pg-hud-badge">Score: <strong id="pg-score">0</strong></span>
+              <span class="pg-hud-badge">Combo: <strong id="pg-combo">x1</strong></span>
+              <span class="pg-hud-badge">Best: <strong id="pg-best">0</strong></span>
+              <span class="pg-hud-badge">Time: <strong id="pg-timer">0s</strong></span>
+              <span class="pg-hud-badge">Geese: <strong id="pg-count">1 / 5</strong></span>
+            </div>
             <div class="toolbar-group">
-              <button type="button" class="btn btn-primary btn-sm" id="btn-add-goose" data-i18n="pg.addGoose">+ 新增一隻鵝</button>
-              <button type="button" class="btn btn-secondary btn-sm" id="btn-jump-all" data-i18n="pg.jumpAll">全部跳躍</button>
-              <button type="button" class="btn btn-secondary btn-sm" id="btn-sleep-toggle" data-i18n="pg.sleepToggle">睡覺 / 喚醒</button>
-              <button type="button" class="btn btn-secondary btn-sm" id="btn-reset-geese" data-i18n="pg.reset">重置為 1 隻</button>
-            </div>
-            <div class="toolbar-group" role="group" aria-label="Feed Gooose">
-              <span style="font-weight:700;font-size:0.88rem;" data-i18n="pg.feedLabel">餵食：</span>
-              <button type="button" class="btn btn-accent btn-sm feed-btn" data-food="bread" data-emoji="🍞" data-i18n="pg.foodBread">🍞 麵包</button>
-              <button type="button" class="btn btn-accent btn-sm feed-btn" data-food="corn" data-emoji="🌽" data-i18n="pg.foodCorn">🌽 玉米</button>
-              <button type="button" class="btn btn-accent btn-sm feed-btn" data-food="berry" data-emoji="🍓" data-i18n="pg.foodBerry">🍓 草莓</button>
+              <select class="pg-select" id="pg-mode" aria-label="Game Mode">
+                <option value="free">Free Play</option>
+                <option value="frenzy">Feeding Frenzy (30s)</option>
+                <option value="catch">Goose Catch (25s)</option>
+                <option value="race">Goose Race</option>
+                <option value="chaos">Chaos Mode</option>
+              </select>
+              <button type="button" class="btn btn-secondary btn-sm" id="pg-pause" data-i18n="pg.pause">暫停</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="pg-reset" data-i18n="pg.reset">重置</button>
             </div>
           </div>
 
-          <div class="arena" id="goose-arena" aria-label="Interactive Goose Playground">
-            <div class="arena-hint" data-i18n="pg.hint">點擊小鵝講幹話 · 拖曳搬家 · 方向鍵微調</div>
-            <div class="arena-count" id="arena-count">1 / 5</div>
-            <div class="arena-floor" aria-hidden="true"></div>
+          <div class="pg-controls-row">
+            <div class="toolbar-group">
+              <button type="button" class="btn btn-primary btn-sm" id="pg-add-goose">+ Goose</button>
+              <select class="pg-select" id="pg-food-select" aria-label="Select Food">
+                <option value="bread">🍞 Bread</option>
+                <option value="corn">🌽 Corn</option>
+                <option value="strawberry">🍓 Strawberry</option>
+                <option value="cookie">🍪 Cookie</option>
+                <option value="apple">🍎 Apple</option>
+              </select>
+              <button type="button" class="btn btn-accent btn-sm" id="pg-drop-food">Drop Food</button>
+            </div>
+            <div class="toolbar-group">
+              <select class="pg-select" id="pg-personality" aria-label="Personality">
+                <option value="chaotic">Chaotic Goose</option>
+                <option value="lazy">Lazy Goose</option>
+                <option value="hungry">Hungry Goose</option>
+                <option value="sleepy">Sleepy Goose</option>
+              </select>
+              <select class="pg-select" id="pg-hat" aria-label="Hat">
+                <option value="none">No Hat</option>
+                <option value="crown">👑 Crown</option>
+                <option value="cap">🧢 Cap</option>
+                <option value="bow">🎀 Bow</option>
+                <option value="glasses">🕶️ Glasses</option>
+              </select>
+              <select class="pg-select" id="pg-color" aria-label="Color">
+                <option value="#FFFFFF">White</option>
+                <option value="#FFF3C4">Butter</option>
+                <option value="#FFE5D4">Peach</option>
+                <option value="#E8F5E9">Mint</option>
+              </select>
+            </div>
           </div>
 
-          <div class="playground-footer">
-            <div class="family-roster" id="family-roster"></div>
-            <span data-i18n="pg.sandboxNote">🔒 瀏覽器內安全沙盒玩具：不會要求螢幕錄影或輔助使用權限，也不會操作你真正的滑鼠。</span>
+          <div class="arena-canvas-wrap">
+            <canvas id="playground-canvas" aria-label="Goose Playground 2.0 Physics Canvas"></canvas>
           </div>
+
+          <div class="pg-footer">
+            <div class="pg-counter-bar">
+              <span id="pg-counters-text"></span>
+              <button type="button" class="btn btn-secondary btn-sm" id="pg-reset-counters">Reset Stats</button>
+            </div>
+            <span data-i18n="pg.sandboxNote">🔒 瀏覽器安全沙盒：不要求螢幕錄影或輔助使用權限，不會操作你真正的滑鼠。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini-Games -->
+    <section class="section" id="games">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="games.eyebrow">品牌小遊戲</span>
+          <h2 class="section-title" data-i18n="games.title">gooose Arcade 小遊戲</h2>
+          <p class="section-desc" data-i18n="games.desc">兩款完整可玩的小遊戲，支援鍵盤、滑鼠與手機觸控，最高紀錄自動保存在本機。</p>
+        </div>
+
+        <div class="games-grid">
+          <article class="game-card">
+            <div class="game-head">
+              <h3>🍞 Bread Collector</h3>
+              <div class="game-stats">
+                <span>Score: <strong id="bg-score">0</strong></span>
+                <span>Lives: <strong id="bg-lives">❤️❤️❤️</strong></span>
+                <span>Best: <strong id="bg-best">0</strong></span>
+                <button type="button" class="btn btn-primary btn-sm" id="bg-start">Start</button>
+              </div>
+            </div>
+            <div class="game-canvas-box">
+              <canvas id="bread-game-canvas" aria-label="Bread Collector Game"></canvas>
+            </div>
+            <p style="margin:0;color:var(--muted);font-size:0.86rem;">Move with mouse/touch or ←/→ (A/D). Catch 🍞 &amp; 🥐, dodge 💣!</p>
+          </article>
+
+          <article class="game-card">
+            <div class="game-head">
+              <h3>🃏 Goose Memory</h3>
+              <div class="game-stats">
+                <span>Moves: <strong id="mem-moves">0</strong></span>
+                <span>Time: <strong id="mem-timer">0s</strong></span>
+                <span>Best: <strong id="mem-best">—</strong></span>
+                <select class="pg-select" id="mem-diff" aria-label="Memory Difficulty">
+                  <option value="easy">Easy (4×3)</option>
+                  <option value="hard">Hard (4×4)</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-sm" id="mem-restart">Restart</button>
+              </div>
+            </div>
+            <div class="memory-grid" id="memory-grid"></div>
+          </article>
         </div>
       </div>
     </section>
@@ -1281,24 +288,31 @@
     <section class="section" id="gallery">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow" data-i18n="gallery.eyebrow">實際畫面</span>
+          <span class="eyebrow" data-i18n="gallery.eyebrow">真實畫面展示</span>
           <h2 class="section-title" data-i18n="gallery.title">桌面上的真實模樣</h2>
-          <p class="section-desc" data-i18n="gallery.desc">只展示目前 Repository 中真實存在的素材，不使用虛構截圖。</p>
+          <p class="section-desc" data-i18n="gallery.desc">可依類型篩選素材，點擊圖片開啟燈箱（ESC 關閉）。未上傳的動態素材誠實標註於右側。</p>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Gallery filters">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="screenshots">Screenshots</button>
+          <button type="button" class="filter-btn" data-filter="gif">GIF</button>
+          <button type="button" class="filter-btn" data-filter="video">Video</button>
         </div>
 
         <div class="gallery-grid">
-          <figure class="media-card" style="margin:0;">
+          <figure class="media-card" id="gallery-shot-card" style="margin:0;">
             <button type="button" class="media-thumb-btn" id="open-lightbox-screenshot" aria-label="Enlarge macOS screenshot">
-              <img id="gallery-screenshot-img" src="../assets/screenshot-macos.png" loading="lazy" alt="Gooose 在 macOS 桌面實際運行的截圖" />
+              <img id="gallery-screenshot-img" src="../assets/screenshot-macos.png" loading="lazy" alt="gooose 在 macOS 桌面實際運行的截圖" />
             </button>
             <figcaption class="media-caption">
               <h3 data-i18n="gallery.shotTitle">macOS 桌面實機截圖</h3>
-              <p data-i18n="gallery.shotDesc">取自 li-bao/gooose Repository 的真實運行畫面（點擊可放大檢視，按 ESC 關閉）。</p>
+              <p data-i18n="gallery.shotDesc">取自 li-bao/gooose 的真實運行畫面（點擊可放大檢視，按 ESC 關閉）。</p>
             </figcaption>
           </figure>
 
-          <div class="missing-media-panel">
-            <h3 data-i18n="gallery.missingTitle">待補齊的展示素材清單</h3>
+          <div class="missing-media-panel" id="gallery-missing-card">
+            <h3 data-i18n="gallery.missingTitle">待補齊的影音素材清單</h3>
             <p class="section-desc" style="font-size:0.92rem;" data-i18n="gallery.missingDesc">
               目前桌面程式 Repository 尚無以下影音檔案，待製作完成後可直接加入本區：
             </p>
@@ -1314,12 +328,12 @@
         <div class="section-head">
           <span class="eyebrow" data-i18n="dl.eyebrow">下載中心</span>
           <h2 class="section-title" data-i18n="dl.title">迎接你的桌面新室友</h2>
-          <p class="section-desc" data-i18n="dl.desc">所有版本號、下載連結與 SHA-256 皆即時來自 GitHub Releases API。</p>
+          <p class="section-desc" data-i18n="dl.desc">所有版本號、下載連結、下載次數與 SHA-256 皆即時來自 GitHub Releases API。</p>
         </div>
 
-        <div class="api-status-bar" id="api-status-bar" role="status" aria-live="polite">
+        <div class="api-status-bar" role="status" aria-live="polite">
           <span id="api-status-text" data-i18n="api.loading">正在從 GitHub 取得最新發布資料…</span>
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-api" data-i18n="api.refresh">重新整理資料</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-api" data-i18n="api.refresh">重新整理</button>
         </div>
 
         <div class="download-grid">
@@ -1328,22 +342,23 @@
             <div class="dl-meta-row">
               <span class="dl-badge"><span data-i18n="dl.version">版本：</span><strong id="dl-version">—</strong></span>
               <span class="dl-badge"><span data-i18n="dl.date">發布日期：</span><strong id="dl-date">—</strong></span>
-              <span class="dl-badge"><span data-i18n="dl.size">檔案大小：</span><strong id="dl-size">—</strong></span>
+              <span class="dl-badge"><span data-i18n="dl.size">大小：</span><strong id="dl-size">—</strong></span>
+              <span class="dl-badge"><span data-i18n="dl.downloads">下載次數：</span><strong id="dl-count">—</strong></span>
             </div>
 
-            <div class="dl-actions" id="dl-actions">
+            <div class="dl-actions">
               <a class="btn btn-primary" id="btn-dl-arm64" href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="dl.btnArm">下載 Apple Silicon (.dmg)</a>
               <a class="btn btn-secondary" id="btn-dl-intel" href="#" style="display:none;" data-i18n="dl.btnIntel">下載 Intel Mac</a>
-              <a class="btn btn-secondary" href="https://github.com/li-bao/gooose/releases" target="_blank" rel="noopener noreferrer" data-i18n="dl.btnAll">查看 GitHub Releases</a>
+              <a class="btn btn-secondary" href="https://github.com/li-bao/gooose/releases" target="_blank" rel="noopener noreferrer" data-i18n="dl.btnAll">GitHub Releases</a>
             </div>
 
-            <p id="dl-arch-note" style="margin:8px 0 0;color:var(--muted);font-size:0.9rem;" data-i18n="dl.armOnlyNote">
+            <p style="margin:8px 0 0;color:var(--muted);font-size:0.9rem;" data-i18n="dl.armOnlyNote">
               目前僅提供 Apple Silicon（arm64）原生版本，暫無 Intel Mac（x86_64）建置檔案。
             </p>
 
             <div class="sha-box">
               <div>
-                <strong data-i18n="dl.shaLabel">SHA-256 校驗碼：</strong>
+                <strong data-i18n="dl.shaLabel">SHA-256：</strong>
                 <code id="dl-sha256">—</code>
               </div>
               <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-sha" disabled data-i18n="dl.copySha">複製</button>
@@ -1352,9 +367,9 @@
             <div class="notice-box">
               <strong data-i18n="dl.signTitle">⚠️ 簽章與公證說明（誠實揭露）</strong>
               <p style="margin:6px 0 0;" data-i18n="dl.signBody">
-                Gooose 目前為 Ad-hoc 本機簽章（尚未經 Apple Developer ID 公證）。首次開啟若遇到 macOS Gatekeeper 提示，請在「系統設定 → 隱私權與安全性」點擊「強制打開」，或對 App 按右鍵選擇「打開」，亦可執行：
+                gooose 目前採 Ad-hoc 本機簽章（尚未經 Apple Developer ID 公證）。首次開啟若遇到 macOS Gatekeeper 提示，請在「系統設定 → 隱私權與安全性」點擊「強制打開」，或對 App 按右鍵選「打開」，亦可執行：
               </p>
-              <pre><code>xattr -cr "/Applications/Super Goose Desktop.app"</code></pre>
+              <pre><code>xattr -cr "/Applications/gooose.app"</code></pre>
             </div>
           </div>
 
@@ -1362,24 +377,32 @@
             <h3 style="font-size:1.25rem;margin-bottom:12px;" data-i18n="dl.guideTitle">安裝說明與系統需求</h3>
             <ul style="padding-left:18px;margin:0 0 18px;color:var(--muted);display:grid;gap:8px;" id="dl-install-steps"></ul>
             <h4 style="font-size:1rem;margin-bottom:8px;" data-i18n="dl.notesTitle">最新版本說明（Release Notes）</h4>
-            <div class="release-body-raw" id="dl-release-notes" data-i18n="dl.notesLoading">載入中…</div>
+            <div class="release-body-raw" id="dl-release-notes">…</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Documentation -->
+    <!-- Docs -->
     <section class="section" id="docs">
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow" data-i18n="docs.eyebrow">使用手冊</span>
           <h2 class="section-title" data-i18n="docs.title">完整文件</h2>
-          <p class="section-desc" data-i18n="docs.desc">根據 li-bao/gooose 實際程式碼與官方文件撰寫，絕不虛構功能或指令。</p>
+          <p class="section-desc" data-i18n="docs.desc">依據 li-bao/gooose 實際程式碼與官方文件撰寫，支援搜尋與一鍵複製指令。</p>
         </div>
 
         <div class="docs-shell">
-          <div class="docs-tabs" role="tablist" aria-label="Documentation topics" id="docs-tablist"></div>
-          <div class="docs-panel" role="tabpanel" id="docs-tabpanel" tabindex="0"></div>
+          <div class="docs-sidebar">
+            <input type="search" class="search-input" id="docs-search" placeholder="Search docs…" aria-label="Search documentation" />
+            <div class="docs-tabs" role="tablist" aria-label="Documentation topics" id="docs-tablist"></div>
+          </div>
+          <div>
+            <div class="docs-progress-track" aria-hidden="true">
+              <div class="docs-progress-fill" id="docs-progress-fill"></div>
+            </div>
+            <div class="docs-panel" role="tabpanel" id="docs-tabpanel" tabindex="0"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1390,7 +413,18 @@
         <div class="section-head">
           <span class="eyebrow" data-i18n="faq.eyebrow">疑難排解</span>
           <h2 class="section-title" data-i18n="faq.title">常見問題 FAQ</h2>
-          <p class="section-desc" data-i18n="faq.desc">關於安裝、權限、網路連線與資料儲存的解答。</p>
+          <p class="section-desc" data-i18n="faq.desc">支援關鍵字搜尋與分類篩選，快速找到安裝、權限與資料儲存解答。</p>
+        </div>
+
+        <div class="faq-controls">
+          <input type="search" class="search-input" id="faq-search" style="max-width:340px;" placeholder="Search FAQ…" aria-label="Search FAQ" />
+          <select class="pg-select" id="faq-cat" aria-label="FAQ Category">
+            <option value="all">All Categories</option>
+            <option value="general">General</option>
+            <option value="install">Install</option>
+            <option value="features">Features</option>
+            <option value="privacy">Privacy &amp; Permissions</option>
+          </select>
         </div>
 
         <div class="faq-list" id="faq-list"></div>
@@ -1405,7 +439,6 @@
           <h2 class="section-title" data-i18n="cl.title">Changelog</h2>
           <p class="section-desc" data-i18n="cl.desc">自動同步 GitHub Releases API。未人工翻譯的 Release Notes 會明確標示原文語言。</p>
         </div>
-
         <div class="changelog-list" id="changelog-list"></div>
       </div>
     </section>
@@ -1420,11 +453,10 @@
         </div>
 
         <div class="two-col">
-          <article class="policy-card" id="security-card">
+          <article class="policy-card">
             <h3 data-i18n="sec.cardTitle">🛡️ 安全性說明（Security）</h3>
             <ul id="security-list"></ul>
           </article>
-
           <article class="policy-card" id="privacy">
             <h3 data-i18n="priv.cardTitle">🔒 隱私權說明（Privacy）</h3>
             <ul id="privacy-list"></ul>
@@ -1436,18 +468,21 @@
 
   <footer>
     <div class="wrap footer-grid">
-      <div>
-        <strong style="font-size:1.05rem;">🪿 Gooose</strong>
-        <p style="margin:4px 0 0;color:var(--muted);font-size:0.9rem;" data-i18n="footer.copy">
-          Created by Li-bao · 開源 macOS 桌面寵物 · 託管於 GitHub Pages
-        </p>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button type="button" class="secret-footer-goose" id="secret-footer-goose" aria-label="Secret Footer Goose">🪿</button>
+        <div>
+          <strong style="font-size:1.05rem;">gooose</strong>
+          <p style="margin:3px 0 0;color:var(--muted);font-size:0.88rem;" data-i18n="footer.copy">
+            Created by Li-bao · gooose 開源 macOS 桌面寵物 · 託管於 GitHub Pages
+          </p>
+        </div>
       </div>
       <div class="footer-links">
         <a href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://github.com/li-bao/gooose/releases" target="_blank" rel="noopener noreferrer">Releases</a>
         <a href="https://github.com/li-bao/gooose/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-        <a href="#security" data-i18n="footer.sec">Security</a>
-        <a href="#privacy" data-i18n="footer.priv">Privacy</a>
+        <a href="#security">Security</a>
+        <a href="#privacy">Privacy</a>
       </div>
     </div>
   </footer>
@@ -1463,1266 +498,14 @@
     </div>
   </div>
 
-  <script>
-    (function () {
-      'use strict';
-
-      const REPO_OWNER = 'li-bao';
-      const REPO_NAME = 'gooose';
-      const CACHE_TTL_MS = 15 * 60 * 1000;
-      const REQUEST_TIMEOUT_MS = 8000;
-      const MAX_GEESE = 5;
-
-      const defaultLang = document.documentElement.dataset.defaultLang === 'en' ? 'en' : 'zh-TW';
-      const assetPrefix = document.documentElement.dataset.assetPrefix || '';
-      let currentLang = defaultLang;
-
-      /* ===========================
-       * 1. Translations & Content
-       * =========================== */
-      const I18N = {
-        'zh-TW': {
-          skip: '跳至主要內容',
-          'nav.home': '首頁',
-          'nav.features': '功能特色',
-          'nav.playground': '互動遊樂場',
-          'nav.gallery': '畫面展示',
-          'nav.download': '下載',
-          'nav.docs': '文件',
-          'nav.faq': '常見問題',
-          'nav.changelog': '更新日誌',
-          'nav.menu': '選單',
-          'theme.system': '跟隨系統',
-          'theme.light': '淺色模式',
-          'theme.dark': '深色模式',
-          'hero.eyebrow': 'macOS Apple Silicon · 開源桌面寵物',
-          'hero.title': '給你的桌面添一點可愛混亂。',
-          'hero.subtitle': '認識你最愛的新桌面搗蛋鬼。',
-          'hero.lead': 'Gooose 是一款由 Li-bao 開發的原生 macOS 桌面寵物。牠會在螢幕上散步、搶走你的滑鼠游標、從螢幕邊緣拖出迷因圖片和便利貼，甚至帶著最多 5 隻鵝夥伴一起在你的 Mac 上開派對。',
-          'hero.starsLabel': 'GitHub Stars：',
-          'hero.versionLabel': '最新版本：',
-          'hero.platform': 'Apple Silicon · macOS 26+',
-          'hero.ctaDownload': '立即下載 Gooose',
-          'hero.ctaPlay': '在網頁試玩小鵝',
-          'hero.ctaGithub': '查看 GitHub',
-          'hero.note': '「嘎！你的游標現在歸我管了。」',
-          'features.eyebrow': '核心特色',
-          'features.title': '為什麼你的桌面需要一隻鵝？',
-          'features.desc': '以 Swift、SwiftUI、AppKit 與 SpriteKit 原生打造，兼具流暢手感與豐富惡作劇系統。',
-          'playground.eyebrow': '網頁互動體驗',
-          'playground.title': 'Interactive Goose & Goose Family',
-          'playground.desc': '直接點擊、拖曳或餵食網頁裡的小鵝！最多可同時加入 5 隻擁有獨立狀態的鵝。',
-          'pg.addGoose': '+ 新增一隻鵝',
-          'pg.jumpAll': '全部跳躍',
-          'pg.sleepToggle': '睡覺 / 喚醒',
-          'pg.reset': '重置為 1 隻',
-          'pg.feedLabel': '餵食：',
-          'pg.foodBread': '🍞 麵包',
-          'pg.foodCorn': '🌽 玉米',
-          'pg.foodBerry': '🍓 草莓',
-          'pg.hint': '點擊小鵝講幹話 · 拖曳搬家 · 方向鍵微調',
-          'pg.sandboxNote': '🔒 瀏覽器內安全沙盒玩具：不會要求螢幕錄影或輔助使用權限，也不會操作你真正的滑鼠。',
-          'gallery.eyebrow': '實際畫面',
-          'gallery.title': '桌面上的真實模樣',
-          'gallery.desc': '只展示目前 Repository 中真實存在的素材，不使用虛構截圖。',
-          'gallery.shotTitle': 'macOS 桌面實機截圖',
-          'gallery.shotDesc': '取自 li-bao/gooose Repository 的真實運行畫面（點擊可放大檢視，按 ESC 關閉）。',
-          'gallery.missingTitle': '待補齊的展示素材清單',
-          'gallery.missingDesc': '目前桌面程式 Repository 尚無以下影音檔案，待製作完成後可直接加入本區：',
-          'dl.eyebrow': '下載中心',
-          'dl.title': '迎接你的桌面新室友',
-          'dl.desc': '所有版本號、下載連結與 SHA-256 皆即時來自 GitHub Releases API。',
-          'api.loading': '正在從 GitHub 取得最新發布資料…',
-          'api.refresh': '重新整理資料',
-          'api.live': '已同步 GitHub 即時資料（快取 15 分鐘）',
-          'api.cached': '目前顯示最後一次成功快取的真實資料（GitHub API 暫時無法連線或受限）',
-          'api.unavailable': '目前無法取得 GitHub 資料，請稍後再試或直接前往 GitHub Releases 頁面。',
-          'dl.loadingTitle': '正在載入最新版本…',
-          'dl.version': '版本：',
-          'dl.date': '發布日期：',
-          'dl.size': '檔案大小：',
-          'dl.btnArm': '下載 Apple Silicon (.dmg)',
-          'dl.btnIntel': '下載 Intel Mac',
-          'dl.btnAll': '查看 GitHub Releases',
-          'dl.armOnlyNote': '目前僅提供 Apple Silicon（arm64）原生版本，暫無 Intel Mac（x86_64）建置檔案。',
-          'dl.shaLabel': 'SHA-256 校驗碼：',
-          'dl.copySha': '複製',
-          'dl.copied': '已複製！',
-          'dl.shaMissing': 'GitHub Release 尚未提供',
-          'dl.signTitle': '⚠️ 簽章與公證說明（誠實揭露）',
-          'dl.signBody': 'Gooose 目前為 Ad-hoc 本機簽章（尚未經 Apple Developer ID 公證）。首次開啟若遇到 macOS Gatekeeper 提示，請在「系統設定 → 隱私權與安全性」點擊「強制打開」，或對 App 按右鍵選擇「打開」，亦可執行：',
-          'dl.guideTitle': '安裝說明與系統需求',
-          'dl.notesTitle': '最新版本說明（Release Notes）',
-          'dl.notesLoading': '載入中…',
-          'docs.eyebrow': '使用手冊',
-          'docs.title': '完整文件',
-          'docs.desc': '根據 li-bao/gooose 實際程式碼與官方文件撰寫，絕不虛構功能或指令。',
-          'faq.eyebrow': '疑難排解',
-          'faq.title': '常見問題 FAQ',
-          'faq.desc': '關於安裝、權限、網路連線與資料儲存的解答。',
-          'cl.eyebrow': '版本紀錄',
-          'cl.title': 'Changelog',
-          'cl.desc': '自動同步 GitHub Releases API。未人工翻譯的 Release Notes 會明確標示原文語言。',
-          'cl.origLang': '原文語言：English（未翻譯）',
-          'cl.rawToggle': '展開原始 Release Notes',
-          'sec.eyebrow': '安全與隱私',
-          'sec.title': 'Security & Privacy',
-          'sec.desc': '清楚區分本官方網站與 macOS 桌面應用程式的實際行為，不誇大保證。',
-          'sec.cardTitle': '🛡️ 安全性說明（Security）',
-          'priv.cardTitle': '🔒 隱私權說明（Privacy）',
-          'footer.copy': 'Created by Li-bao · 開源 macOS 桌面寵物 · 託管於 GitHub Pages',
-          'footer.sec': '安全性',
-          'footer.priv': '隱私權',
-          'lb.close': '關閉 (ESC)'
-        },
-        en: {
-          skip: 'Skip to main content',
-          'nav.home': 'Home',
-          'nav.features': 'Features',
-          'nav.playground': 'Playground',
-          'nav.gallery': 'Gallery',
-          'nav.download': 'Download',
-          'nav.docs': 'Docs',
-          'nav.faq': 'FAQ',
-          'nav.changelog': 'Changelog',
-          'nav.menu': 'Menu',
-          'theme.system': 'System',
-          'theme.light': 'Light',
-          'theme.dark': 'Dark',
-          'hero.eyebrow': 'macOS Apple Silicon · Open-Source Desktop Pet',
-          'hero.title': 'A little chaos on your desktop.',
-          'hero.subtitle': 'Meet your new favorite desktop troublemaker.',
-          'hero.lead': 'Gooose is a native macOS desktop pet created by Li-bao. It waddles across your screen, steals your mouse cursor, drags memes and sticky notes from screen edges, and supports a Goose Family of up to 5 geese.',
-          'hero.starsLabel': 'GitHub Stars: ',
-          'hero.versionLabel': 'Latest Release: ',
-          'hero.platform': 'Apple Silicon · macOS 26+',
-          'hero.ctaDownload': 'Download Gooose',
-          'hero.ctaPlay': 'Try Interactive Goose',
-          'hero.ctaGithub': 'View on GitHub',
-          'hero.note': '"HONK! Your cursor belongs to me now."',
-          'features.eyebrow': 'Features',
-          'features.title': 'Why does your desktop need a goose?',
-          'features.desc': 'Built natively with Swift, SwiftUI, AppKit, and SpriteKit for smooth animations and playful desktop pranks.',
-          'playground.eyebrow': 'Browser Sandbox',
-          'playground.title': 'Interactive Goose & Goose Family',
-          'playground.desc': 'Click, drag, or feed the geese right in your browser! Spawn up to 5 geese with independent states.',
-          'pg.addGoose': '+ Add Goose',
-          'pg.jumpAll': 'Jump All',
-          'pg.sleepToggle': 'Sleep / Wake',
-          'pg.reset': 'Reset to 1',
-          'pg.feedLabel': 'Feed:',
-          'pg.foodBread': '🍞 Bread',
-          'pg.foodCorn': '🌽 Corn',
-          'pg.foodBerry': '🍓 Strawberry',
-          'pg.hint': 'Click to honk · Drag to move · Arrow keys to nudge',
-          'pg.sandboxNote': '🔒 Browser-only interactive toy: requests zero macOS permissions and never touches your real cursor or desktop.',
-          'gallery.eyebrow': 'Gallery',
-          'gallery.title': 'Gooose in Action',
-          'gallery.desc': 'Only real media present in the repository is shown here—no fabricated mockups.',
-          'gallery.shotTitle': 'macOS Desktop Screenshot',
-          'gallery.shotDesc': 'Real screenshot from li-bao/gooose (click to enlarge, press ESC to close).',
-          'gallery.missingTitle': 'Missing Media Assets Checklist',
-          'gallery.missingDesc': 'The following media files are not yet in the desktop repository and can be added once recorded:',
-          'dl.eyebrow': 'Download Center',
-          'dl.title': 'Welcome Your New Desktop Troublemaker',
-          'dl.desc': 'Version numbers, download URLs, and SHA-256 checksums are fetched live from the GitHub Releases API.',
-          'api.loading': 'Fetching latest release data from GitHub…',
-          'api.refresh': 'Refresh Data',
-          'api.live': 'Live GitHub data synced (15-minute cache)',
-          'api.cached': 'Showing last cached real data (GitHub API temporarily unreachable or rate-limited)',
-          'api.unavailable': 'GitHub data is currently unavailable. Please try again later or visit GitHub Releases directly.',
-          'dl.loadingTitle': 'Loading latest release…',
-          'dl.version': 'Version: ',
-          'dl.date': 'Released: ',
-          'dl.size': 'File Size: ',
-          'dl.btnArm': 'Download Apple Silicon (.dmg)',
-          'dl.btnIntel': 'Download Intel Mac',
-          'dl.btnAll': 'Open GitHub Releases',
-          'dl.armOnlyNote': 'Currently built for Apple Silicon (arm64) only. No Intel Mac (x86_64) build is published.',
-          'dl.shaLabel': 'SHA-256 Digest:',
-          'dl.copySha': 'Copy',
-          'dl.copied': 'Copied!',
-          'dl.shaMissing': 'Not provided by GitHub Release',
-          'dl.signTitle': '⚠️ Code Signing & Notarization Notice',
-          'dl.signBody': 'Gooose is currently ad-hoc signed (-) and NOT Apple-notarized. On first launch, use System Settings → Privacy & Security → Open Anyway, Right-click → Open, or run:',
-          'dl.guideTitle': 'Installation & Requirements',
-          'dl.notesTitle': 'Latest Release Notes',
-          'dl.notesLoading': 'Loading…',
-          'docs.eyebrow': 'Documentation',
-          'docs.title': 'Complete Guide',
-          'docs.desc': 'Written directly from the actual li-bao/gooose source code and official docs.',
-          'faq.eyebrow': 'FAQ',
-          'faq.title': 'Frequently Asked Questions',
-          'faq.desc': 'Answers about installation, permissions, network activity, and local storage.',
-          'cl.eyebrow': 'Release History',
-          'cl.title': 'Changelog',
-          'cl.desc': 'Automatically synced from the GitHub Releases API. Untranslated release notes are clearly labeled.',
-          'cl.origLang': 'Original Language: English',
-          'cl.rawToggle': 'Toggle Raw Release Notes',
-          'sec.eyebrow': 'Trust & Transparency',
-          'sec.title': 'Security & Privacy',
-          'sec.desc': 'Clear separation between this static website and the macOS desktop app—no exaggerated claims.',
-          'sec.cardTitle': '🛡️ Security',
-          'priv.cardTitle': '🔒 Privacy',
-          'footer.copy': 'Created by Li-bao · Open-source macOS desktop pet · Hosted on GitHub Pages',
-          'footer.sec': 'Security',
-          'footer.priv': 'Privacy',
-          'lb.close': 'Close (ESC)'
-        }
-      };
-
-      const FEATURES_DATA = {
-        'zh-TW': [
-          { icon: '🖱️', title: '搶走你的滑鼠游標', desc: '小鵝會追逐或叼走你的游標，透過 GlobalActionCoordinator 安全控制並支援 ESC / ⌃⌥⌘E 緊急停止。' },
-          { icon: '🪿', title: 'Goose Family 多鵝互動', desc: '最多支援 5 隻鵝同時在桌面活動，擁有追逐、打招呼、吵架、一起睡覺與搶迷因等 8 種社交互動。' },
-          { icon: '🖼️', title: '邊緣拖出迷因與便利貼', desc: '從螢幕可見邊緣平滑拖出個人迷因圖庫（PNG/JPG/WEBP/GIF）與可編輯調整大小的便利貼。' },
-          { icon: '🎭', title: '7 種情緒與 4 種惡作劇預設', desc: '包含開心、生氣、無聊、興奮、想睡、好奇與調皮情緒，以及 Peaceful 到 Chaos 四種強度預設。' },
-          { icon: '🎨', title: '高度自訂工作室', desc: '內建 10 分頁設定中心，支援自訂音效包、嘲諷語錄庫、動畫工作室參數與跨啟動狀態保存。' },
-          { icon: '⚡', title: '原生 Swift 與本機 Vision OCR', desc: '專為 Apple Silicon 與 macOS 26+ 打造，螢幕辨識全程於本機記憶體內執行，不寫入硬碟。' }
-        ],
-        en: [
-          { icon: '🖱️', title: 'Steals Your Mouse Cursor', desc: 'Geese chase or nab your cursor with guarded GlobalActionCoordinator leases and instant ESC / ⌃⌥⌘E Emergency Stop.' },
-          { icon: '🪿', title: 'Goose Family (Up to 5)', desc: 'Spawn up to 5 independent geese that chase, greet, argue, sleep together, and steal memes from each other.' },
-          { icon: '🖼️', title: 'Edge-Drag Memes & Sticky Notes', desc: 'Smoothly pulls your personal meme library (PNG/JPG/WEBP/GIF) and resizable editable sticky notes from screen edges.' },
-          { icon: '🎭', title: '7 Emotions & 4 Prank Presets', desc: 'Dynamic energy (0–100), 7 emotions, and Peaceful, Normal, Mischievous, or Chaos presets.' },
-          { icon: '🎨', title: 'Full Customization Suite', desc: '10-tab Settings Center with custom audio packs, taunt libraries, animation controls, and persistent goose states.' },
-          { icon: '⚡', title: 'Native Swift & On-Device OCR', desc: 'Built for Apple Silicon on macOS 26+. Optional Vision OCR runs strictly in RAM and never leaves your Mac.' }
-        ]
-      };
-
-      const MISSING_MEDIA = {
-        'zh-TW': [
-          'Goose 桌面互動動態 GIF（目前 README 內的 assets/gooose-demo.gif 尚未上傳）',
-          '實際使用示範影片（MP4 / WebM，含游標追逐與邊緣拖曳迷因）',
-          'Goose Family 多隻鵝同框互動截圖或影片',
-          '更多高解析度桌面實機截圖'
-        ],
-        en: [
-          'Desktop interaction animated GIF (assets/gooose-demo.gif referenced in README is not yet in repo)',
-          'Gameplay demo video (MP4 / WebM showing cursor stealing and edge-dragged memes)',
-          'Goose Family multi-goose social interaction screenshot or clip',
-          'Additional high-resolution macOS desktop screenshots'
-        ]
-      };
-
-      const INSTALL_STEPS = {
-        'zh-TW': [
-          '確認你的 Mac 為 Apple Silicon（M 系列晶片）且系統為 macOS 26.0 或以上版本。',
-          '點擊左側按鈕下載最新的 <code>Gooose-macOS-arm64.dmg</code>。',
-          '開啟 DMG 後，將 App 拖曳至 <code>/Applications</code>（應用程式）資料夾，確保 TCC 權限路徑穩定。',
-          '首次開啟請依上方簽章說明透過「強制打開」或 <code>xattr -cr</code> 解除隔離屬性。'
-        ],
-        en: [
-          'Ensure you have an Apple Silicon Mac (M-series) running macOS 26.0 or later.',
-          'Download the latest <code>Gooose-macOS-arm64.dmg</code> using the button on the left.',
-          'Open the DMG and drag the app into <code>/Applications</code> so macOS TCC permissions stay bound to a stable path.',
-          'On first launch, follow the Gatekeeper notice (Open Anyway or <code>xattr -cr</code>) since builds are ad-hoc signed.'
-        ]
-      };
-
-      const DOCS_DATA = {
-        'zh-TW': [
-          {
-            id: 'getting-started',
-            title: '快速開始 Getting Started',
-            html: '<h3>快速開始</h3><p>Gooose 是一款常駐於 macOS 選單列（Menu Bar 🪿）的桌面寵物應用程式。</p><ul><li>啟動後可從選單列開啟 <strong>Control Center</strong>、<strong>Settings Center</strong>（10 個設定分頁）或 <strong>Permission Center</strong>。</li><li>按住 <strong>ESC</strong> 或使用全域快捷鍵 <code>⌃⌥⌘E</code> 可隨時觸發緊急停止，立即歸還滑鼠控制權並暫停惡作劇。</li><li>預設會保留基本的漫步、打盹、迷因與便利貼互動，即使未授權進階系統權限也能正常遊玩。</li></ul>'
-          },
-          {
-            id: 'installation',
-            title: '安裝方式 Installation',
-            html: '<h3>安裝方式</h3><ul><li>從 GitHub Releases 下載 <code>Gooose-macOS-arm64.dmg</code>。</li><li>將應用程式拖曳至 <code>/Applications</code> 資料夾，並移除 Downloads 中的舊副本，避免 App Translocation 導致權限異常。</li><li>由於目前建置採 Ad-hoc 本機簽章（尚未經過 Apple 公證），首次啟動可對 App 按右鍵選「打開」，或執行：</li></ul><pre><code>xattr -cr "/Applications/Super Goose Desktop.app"</code></pre>'
-          },
-          {
-            id: 'compatibility',
-            title: '系統相容性 Compatibility',
-            html: '<h3>系統相容性</h3><ul><li><strong>支援架構：</strong>Apple Silicon（<code>arm64</code>）。</li><li><strong>最低系統版本：</strong>macOS 26.0+（依據 <code>Goose/Package.swift</code> 定義 <code>.macOS(.v26)</code>）。</li><li><strong>Intel Mac：</strong>目前 Releases 未提供 Intel <code>x86_64</code> 建置版本。</li><li><strong>多螢幕支援：</strong>支援多顯示器座標對應，新增夥伴鵝時會自動分散至不同螢幕。</li></ul>'
-          },
-          {
-            id: 'permissions',
-            title: '權限說明 Permissions',
-            html: '<h3>macOS 權限說明</h3><p>所有進階權限皆可在「選單列 🪿 → Permission Center」查看與管理，不會在背景偷偷彈窗：</p><ul><li><strong>Screen Recording（螢幕錄影）：</strong>僅用於 <code>ScreenCaptureKit</code> 與本機 Vision OCR，提供「自動背景觀察」、「系統內容選擇器（SCContentSharingPicker）」或「完全停用」三種模式。</li><li><strong>Accessibility（輔助使用）：</strong>僅用於視窗惡作劇（Window Pranks / Window Peek）。拒絕授權時僅暫停視窗類惡作劇，不影響其他功能。</li><li><strong>Notifications（通知）：</strong>選用項目，支援 5 種分類開關。</li></ul>'
-          },
-          {
-            id: 'mouse',
-            title: '滑鼠互動 Mouse Interaction',
-            html: '<h3>滑鼠互動機制</h3><ul><li>小鵝會執行 <code>MouseChaseTask</code> 或 <code>NabMouseTask</code> 來追逐或暫時帶走游標。</li><li>所有 <code>CGWarpMouseCursorPosition</code> 呼叫皆集中由 <code>GlobalActionCoordinator</code> 的有時限 <code>ResourceLease</code> 控管，避免多隻鵝同時搶奪。</li><li>一旦觸發 <strong>Emergency Stop（ESC / ⌃⌥⌘E / 選單）</strong>，會立即取消租約並恢復正常游標操作。</li></ul>'
-          },
-          {
-            id: 'multi-goose',
-            title: '多鵝模式 Multi-Goose',
-            html: '<h3>Goose Family 多鵝模式</h3><ul><li><code>GooseManager.hardMaxGeese</code> 硬性上限為 <strong>5 隻</strong>，確保效能與互動品質。</li><li>第一隻鵝會被標記為 <code>isLead</code>，負責 AI 便利貼、耳機與音樂控制等領隊行為。</li><li>多隻鵝之間支援 8 種社交互動：追逐（<code>chasePeer</code>）、打招呼（<code>greetPeer</code>）、吵架（<code>argue</code>）、一起玩（<code>playTogether</code>）、一起睡（<code>sleepTogether</code>）、搶迷因（<code>stealMeme</code>）、分享便利貼（<code>shareMemo</code>）與圍觀（<code>spectateHolder</code>）。</li></ul>'
-          },
-          {
-            id: 'troubleshooting',
-            title: '疑難排解 Troubleshooting',
-            html: '<h3>常見疑難排解</h3><ul><li><strong>授予螢幕錄影後仍顯示需要重啟：</strong>在 Permission Center 點擊「Quit &amp; Reopen」，讓 ScreenCaptureKit 重新取得 TCC Token。</li><li><strong>升級後權限失效：</strong>因 Ad-hoc 簽章每次建置的 CDHash 會變動，可於確認只有一份 App 在 <code>/Applications</code> 後手動重設 TCC：</li></ul><pre><code>tccutil reset ScreenCapture com.pkrutaa.supergoosedesktop\ntccutil reset Accessibility com.pkrutaa.supergoosedesktop</code></pre>'
-          }
-        ],
-        en: [
-          {
-            id: 'getting-started',
-            title: 'Getting Started',
-            html: '<h3>Getting Started</h3><p>Gooose lives in your macOS Menu Bar (🪿).</p><ul><li>Open <strong>Control Center</strong>, the 10-tab <strong>Settings Center</strong>, or <strong>Permission Center</strong> from the menu bar icon.</li><li>Hold <strong>ESC</strong> or press <code>⌃⌥⌘E</code> anytime for Emergency Stop to immediately cancel cursor pranks and pause chaos.</li><li>Core animations, wandering, naps, memes, and sticky notes work out of the box without Screen Recording or Accessibility permissions.</li></ul>'
-          },
-          {
-            id: 'installation',
-            title: 'Installation',
-            html: '<h3>Installation</h3><ul><li>Download <code>Gooose-macOS-arm64.dmg</code> from GitHub Releases.</li><li>Drag the app to <code>/Applications</code> and remove older copies from Downloads to avoid macOS App Translocation issues.</li><li>Because builds are ad-hoc signed (not Apple-notarized), Right-click → Open on first launch, or run:</li></ul><pre><code>xattr -cr "/Applications/Super Goose Desktop.app"</code></pre>'
-          },
-          {
-            id: 'compatibility',
-            title: 'Compatibility',
-            html: '<h3>Compatibility</h3><ul><li><strong>Architecture:</strong> Apple Silicon (<code>arm64</code>) only.</li><li><strong>Minimum OS:</strong> macOS 26.0+ (defined in <code>Goose/Package.swift</code> as <code>.macOS(.v26)</code>).</li><li><strong>Intel Macs:</strong> No <code>x86_64</code> build is currently published.</li><li><strong>Multi-Display:</strong> Companion geese automatically distribute across connected screens.</li></ul>'
-          },
-          {
-            id: 'permissions',
-            title: 'Permissions',
-            html: '<h3>macOS Permissions</h3><p>Inspect and manage permissions in <strong>Menu Bar (🪿) → Permission Center…</strong>:</p><ul><li><strong>Screen Recording:</strong> Powers <code>ScreenCaptureKit</code> + on-device Vision OCR with 3 user modes: Automatic Background, System Content Picker (<code>SCContentSharingPicker</code>), or Completely Disabled.</li><li><strong>Accessibility:</strong> Used only for Window Pranks &amp; Window Peek. When denied, window pranks pause cleanly while everything else keeps working.</li><li><strong>Notifications:</strong> Optional, with 5 per-category toggles.</li></ul>'
-          },
-          {
-            id: 'mouse',
-            title: 'Mouse Interaction',
-            html: '<h3>Mouse Interaction</h3><ul><li>Geese use <code>MouseChaseTask</code> and <code>NabMouseTask</code> to chase or temporarily drag your cursor.</li><li>All <code>CGWarpMouseCursorPosition</code> calls are gated by <code>GlobalActionCoordinator</code> time-bounded resource leases so multiple geese never fight over your pointer.</li><li><strong>Emergency Stop</strong> (<code>ESC</code>, <code>⌃⌥⌘E</code>, or Menu) revokes all leases immediately.</li></ul>'
-          },
-          {
-            id: 'multi-goose',
-            title: 'Multi-Goose',
-            html: '<h3>Goose Family (Multi-Goose)</h3><ul><li><code>GooseManager.hardMaxGeese</code> caps active geese at <strong>5</strong>.</li><li>The first goose is marked <code>isLead</code> to coordinate AI notes and music features.</li><li>Geese perform 8 social interactions: <code>chasePeer</code>, <code>greetPeer</code>, <code>argue</code>, <code>playTogether</code>, <code>sleepTogether</code>, <code>stealMeme</code>, <code>shareMemo</code>, and <code>spectateHolder</code>.</li></ul>'
-          },
-          {
-            id: 'troubleshooting',
-            title: 'Troubleshooting',
-            html: '<h3>Troubleshooting</h3><ul><li><strong>Granted Screen Recording mid-session:</strong> Click <strong>Quit &amp; Reopen</strong> in Permission Center so ScreenCaptureKit receives the new TCC token.</li><li><strong>Stale TCC entries after upgrading ad-hoc builds:</strong> Keep a single copy in <code>/Applications</code> and reset TCC manually if needed:</li></ul><pre><code>tccutil reset ScreenCapture com.pkrutaa.supergoosedesktop\ntccutil reset Accessibility com.pkrutaa.supergoosedesktop</code></pre>'
-          }
-        ]
-      };
-
-      const FAQ_DATA = {
-        'zh-TW': [
-          { q: '1. Gooose 是什麼？', a: 'Gooose 是由 Li-bao 開發的開源 macOS 原生桌面寵物（Swift / SwiftUI / SpriteKit）。牠會在你的螢幕上走動、偷走滑鼠游標、拖出迷因圖片與便利貼，為日常工作帶來一點輕鬆混亂。' },
-          { q: '2. 如何安裝 Gooose？', a: '從本頁 Download Center 下載最新的 Apple Silicon DMG，開啟後將應用程式拖進「應用程式（/Applications）」資料夾。首次開啟因採 Ad-hoc 簽章，請使用「系統設定 → 隱私權與安全性 → 強制打開」或右鍵點擊「打開」。' },
-          { q: '3. 支援哪些 Mac 機型與系統？', a: '目前僅支援搭載 Apple Silicon（M1/M2/M3/M4 等 arm64 架構）且系統為 macOS 26.0 以上的 Mac。目前沒有 Intel Mac 版本。' },
-          { q: '4. 為什麼需要系統權限？不給權限能用嗎？', a: '可以！不給任何權限也能使用小鵝動畫、音效、迷因、便利貼與滑鼠追逐。只有「視窗惡作劇（Window Pranks）」需要輔助使用權限，而「螢幕內容辨識（Vision OCR）」需要螢幕錄影權限，兩者皆為完全選用。' },
-          { q: '5. 如何解除安裝？', a: '先從選單列結束 Gooose，接著將 /Applications 中的應用程式移至垃圾桶即可。沒有隱藏的常駐背景程式或 LaunchAgent。' },
-          { q: '6. 如何回報 Bug？', a: '歡迎直接前往 GitHub Repository（github.com/li-bao/gooose/issues）開立 Issue，並附上你的 macOS 版本與重現步驟。' },
-          { q: '7. 如何更新到最新版本？', a: '可在設定中手動點擊「Check for Updates」檢查 GitHub Releases，或直接到本網站 Download Center 下載新版 DMG 覆蓋 /Applications 內的舊版。' },
-          { q: '8. Gooose 會連接網路嗎？', a: '預設幾乎不主動連網：僅在你手動點擊「Check for Updates」時向 GitHub API 查詢版本，以及在你明確同意開啟「外部 AI（External AI）」選項時才會連線至 OpenAI API。沒有背景遙測或分析追蹤。' },
-          { q: '9. 使用者資料儲存在哪裡？', a: '設定與互動計數器儲存在本機 macOS UserDefaults；鵝的情緒與精力狀態、惡作劇預設與個人迷因圖庫皆儲存在本機檔案（如 goose_states.json、prank_presets.json）。' },
-          { q: '10. 如何使用 Multi-Goose（多鵝模式）？', a: '在 Control Center 或設定中調整最大鵝數量（最多 5 隻）並新增夥伴鵝，牠們會自動進行追逐、打招呼、一起睡覺與搶迷因等 8 種社交互動。' },
-          { q: '11. 可以自訂內容嗎？', a: '可以！支援匯入個人迷因（PNG/JPG/WEBP/GIF）、自訂音效包、編輯便利貼與嘲諷語錄庫，並提供 4 種預設與自訂惡作劇 Preset。' },
-          { q: '12. 是否使用外部 AI？', a: '外部 AI（OpenAIClient）預設為關閉（externalAIOptIn == false）且強制封鎖。只有在使用者明確於設定中確認開啟並自行提供金鑰時才會啟用，且絕不會傳送螢幕截圖或 OCR 文字。' }
-        ],
-        en: [
-          { q: '1. What is Gooose?', a: 'Gooose is an open-source native macOS desktop pet built by Li-bao using Swift, SwiftUI, and SpriteKit. It wanders your screen, steals your cursor, drags memes and sticky notes, and brings playful chaos to your Mac.' },
-          { q: '2. How do I install Gooose?', a: 'Download the latest Apple Silicon DMG from the Download Center, open it, and drag the app into /Applications. Because builds are ad-hoc signed, use Right-click → Open or System Settings → Privacy & Security → Open Anyway on first launch.' },
-          { q: '3. Which Macs are supported?', a: 'Apple Silicon Macs (arm64) running macOS 26.0 or later. There is currently no Intel Mac (x86_64) build.' },
-          { q: '4. Why does it ask for permissions, and are they required?', a: 'They are optional. Core animations, sounds, memes, sticky notes, and cursor chasing work without any TCC permissions. Accessibility is only for Window Pranks, and Screen Recording is only for optional on-device Vision OCR.' },
-          { q: '5. How do I uninstall Gooose?', a: 'Quit Gooose from the menu bar and move the app from /Applications to the Trash. No hidden LaunchAgents or background daemons are installed.' },
-          { q: '6. How do I report a bug?', a: 'Open an issue on GitHub at github.com/li-bao/gooose/issues with your macOS version and steps to reproduce.' },
-          { q: '7. How do I update Gooose?', a: 'Click "Check for Updates" in Settings to check GitHub Releases manually, or download the newest DMG here and replace the app in /Applications.' },
-          { q: '8. Does Gooose connect to the internet?', a: 'By default it only connects when you manually click "Check for Updates" (GitHub Releases API), or if you explicitly opt into External AI (OpenAI API). There is zero background telemetry or analytics.' },
-          { q: '9. Where is user data stored?', a: 'Preferences and counters are stored locally in macOS UserDefaults; goose states (goose_states.json), prank presets (prank_presets.json), and personal meme/audio libraries stay on your local disk.' },
-          { q: '10. How do I use Multi-Goose?', a: 'Increase the goose count in Control Center or Settings (capped at 5 geese). Companion geese autonomously perform 8 social interactions including chasing, greeting, sleeping together, and stealing memes.' },
-          { q: '11. Can I customize memes, sounds, and notes?', a: 'Yes! You can add personal memes (PNG/JPG/WEBP/GIF), custom audio packs, editable sticky notes, custom taunt lines, and custom prank presets.' },
-          { q: '12. Does it use external AI?', a: 'External AI (OpenAIClient) is off and hard-blocked by default (externalAIOptIn == false). It only activates if you explicitly opt in and supply your own key, and it never sends screenshots or OCR text.' }
-        ]
-      };
-
-      const SECURITY_LIST = {
-        'zh-TW': [
-          '<strong>本網站行為：</strong>純靜態 HTML 網站，僅向公開 GitHub REST API（<code>api.github.com</code>）發送唯讀 GET 請求，無後端、無資料庫、無表單收集。',
-          '<strong>桌面程式權限：</strong>螢幕錄影與輔助使用皆為選用且由使用者主動授權；<code>ScreenCaptureKit</code> 與 Vision OCR 僅在記憶體中處理，絕不寫入磁碟。',
-          '<strong>游標與視窗安全：</strong>滑鼠控制集中於 <code>GlobalActionCoordinator</code> 限時租約，隨時可按 <code>ESC</code> 或 <code>⌃⌥⌘E</code> 緊急停止；內嵌瀏覽器僅允許 <code>https://</code> 且使用非持久化儲存。',
-          '<strong>開源透明度：</strong>桌面程式原始碼公開於 <code>github.com/li-bao/gooose</code>，附有 <code>docs/SECURITY.md</code> 稽核紀錄。任何軟體都無法保證絕對零風險。',
-          '<strong>漏洞回報：</strong>若發現安全問題，請透過 GitHub Issues 或於 Repository 頁面聯繫開發者 Li-bao。'
-        ],
-        en: [
-          '<strong>This Website:</strong> Static HTML only. Makes read-only GET requests to public GitHub REST API (<code>api.github.com</code>) with no backend or database.',
-          '<strong>App Permissions:</strong> Screen Recording and Accessibility are optional and user-initiated. <code>ScreenCaptureKit</code> + Vision OCR run strictly in RAM and never write captured frames to disk.',
-          '<strong>Cursor &amp; Window Safety:</strong> Cursor warping is gated by <code>GlobalActionCoordinator</code> leases with instant Emergency Stop (<code>ESC</code> / <code>⌃⌥⌘E</code>). Embedded browser enforces <code>https://</code> and non-persistent storage.',
-          '<strong>Open Source Transparency:</strong> Full Swift source code and <code>docs/SECURITY.md</code> audit notes are public at <code>github.com/li-bao/gooose</code>. No software can promise 100% security.',
-          '<strong>Vulnerability Reporting:</strong> Report security concerns via GitHub Issues or by contacting Li-bao on GitHub.'
-        ]
-      };
-
-      const PRIVACY_LIST = {
-        'zh-TW': [
-          '<strong>本網站儲存：</strong>僅使用瀏覽器 <code>localStorage</code> 儲存主題偏好（<code>gooose-theme</code>）與 GitHub API 回應快取（15 分鐘），不使用追蹤 Cookie 或第三方分析工具（無 GA / Pixel）。',
-          '<strong>個人資料收集：</strong>本網站與桌面程式皆不收集個人身分資料，也沒有帳號登入系統。',
-          '<strong>桌面程式網路連線：</strong>並非宣稱完全離線——當你手動檢查更新時會連線 GitHub API，若手動啟用 Spotify 控制或外部 AI 亦會產生對應連線。',
-          '<strong>本機資料儲存：</strong>桌面程式將設定與自訂內容（偏好設定、狀態 JSON、迷因圖庫）儲存於你的 Mac 本機。',
-          '<strong>外部 AI 選擇加入：</strong><code>OpenAIClient</code> 預設停用，需明確確認 <code>externalAIOptIn</code> 才會啟用，且不含螢幕截圖或 OCR 內容。'
-        ],
-        en: [
-          '<strong>This Website:</strong> Uses browser <code>localStorage</code> only for theme preference (<code>gooose-theme</code>) and 15-minute GitHub API cache. Zero tracking cookies or third-party analytics.',
-          '<strong>Personal Data:</strong> Neither the website nor the desktop app collects personal data or requires an account.',
-          '<strong>Desktop App Network Activity:</strong> We do not claim the app is 100% offline—manual update checks query GitHub API, and optional Spotify or External AI features make their respective requests when enabled.',
-          '<strong>Local Storage:</strong> App settings, goose states, prank presets, and personal meme/audio libraries are stored locally on your Mac.',
-          '<strong>External AI Opt-In:</strong> <code>OpenAIClient</code> is disabled by default until you explicitly opt in (<code>externalAIOptIn</code>), and never transmits screenshots or OCR text.'
-        ]
-      };
-
-      /* ===========================
-       * 2. Theme & Language
-       * =========================== */
-      const themeOrder = ['system', 'light', 'dark'];
-      const themeIcons = { system: '🖥️', light: '☀️', dark: '🌙' };
-
-      function applyTheme(mode) {
-        if (!themeOrder.includes(mode)) mode = 'system';
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const resolved = mode === 'system' ? (prefersDark ? 'dark' : 'light') : mode;
-        document.documentElement.dataset.themeMode = mode;
-        document.documentElement.dataset.theme = resolved;
-        const meta = document.getElementById('meta-theme-color');
-        if (meta) meta.setAttribute('content', resolved === 'dark' ? '#191310' : '#FFFBF2');
-        try { localStorage.setItem('gooose-theme', mode); } catch (e) {}
-
-        const iconEl = document.getElementById('theme-icon');
-        const labelEl = document.getElementById('theme-label');
-        if (iconEl) iconEl.textContent = themeIcons[mode];
-        if (labelEl) labelEl.textContent = I18N[currentLang]['theme.' + mode];
-      }
-
-      if (window.matchMedia) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-          if ((document.documentElement.dataset.themeMode || 'system') === 'system') {
-            applyTheme('system');
-          }
-        });
-      }
-
-      function applyTranslations(lang) {
-        currentLang = lang === 'en' ? 'en' : 'zh-TW';
-        document.documentElement.lang = currentLang;
-
-        document.querySelectorAll('[data-i18n]').forEach((el) => {
-          const key = el.getAttribute('data-i18n');
-          if (I18N[currentLang][key]) {
-            el.textContent = I18N[currentLang][key];
-          }
-        });
-
-        const langLabel = document.getElementById('lang-switch-label');
-        if (langLabel) langLabel.textContent = currentLang === 'zh-TW' ? 'EN' : '繁中';
-
-        const mode = document.documentElement.dataset.themeMode || 'system';
-        const themeLabel = document.getElementById('theme-label');
-        if (themeLabel) themeLabel.textContent = I18N[currentLang]['theme.' + mode];
-
-        const shotImg = document.getElementById('gallery-screenshot-img');
-        if (shotImg) {
-          shotImg.alt = currentLang === 'zh-TW'
-            ? 'Gooose 在 macOS 桌面實際運行的截圖'
-            : 'Real screenshot of Gooose running on macOS desktop';
-        }
-
-        renderFeatures();
-        renderMissingMedia();
-        renderInstallSteps();
-        renderDocs();
-        renderFAQ();
-        renderPolicies();
-        renderGitHubUI();
-      }
-
-      /* ===========================
-       * 3. Render Static Sections
-       * =========================== */
-      function renderFeatures() {
-        const grid = document.getElementById('features-grid');
-        if (!grid) return;
-        grid.innerHTML = FEATURES_DATA[currentLang].map((f) => `
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">${f.icon}</div>
-            <h3>${f.title}</h3>
-            <p>${f.desc}</p>
-          </article>
-        `).join('');
-      }
-
-      function renderMissingMedia() {
-        const list = document.getElementById('missing-media-list');
-        if (!list) return;
-        list.innerHTML = MISSING_MEDIA[currentLang].map((item) => `<li>${item}</li>`).join('');
-      }
-
-      function renderInstallSteps() {
-        const list = document.getElementById('dl-install-steps');
-        if (!list) return;
-        list.innerHTML = INSTALL_STEPS[currentLang].map((s) => `<li>${s}</li>`).join('');
-      }
-
-      let activeDocId = 'getting-started';
-      function renderDocs() {
-        const tablist = document.getElementById('docs-tablist');
-        const panel = document.getElementById('docs-tabpanel');
-        if (!tablist || !panel) return;
-        const docs = DOCS_DATA[currentLang];
-        if (!docs.some((d) => d.id === activeDocId)) activeDocId = docs[0].id;
-
-        tablist.innerHTML = docs.map((d) => `
-          <button type="button" class="doc-tab-btn" role="tab"
-            id="tab-${d.id}" aria-controls="docs-tabpanel"
-            aria-selected="${d.id === activeDocId ? 'true' : 'false'}"
-            data-doc-id="${d.id}">${d.title}</button>
-        `).join('');
-
-        const active = docs.find((d) => d.id === activeDocId) || docs[0];
-        panel.setAttribute('aria-labelledby', 'tab-' + active.id);
-        panel.innerHTML = active.html;
-
-        tablist.querySelectorAll('.doc-tab-btn').forEach((btn) => {
-          btn.addEventListener('click', () => {
-            activeDocId = btn.dataset.docId;
-            renderDocs();
-          });
-        });
-      }
-
-      function renderFAQ() {
-        const list = document.getElementById('faq-list');
-        if (!list) return;
-        list.innerHTML = FAQ_DATA[currentLang].map((item, idx) => `
-          <div class="faq-item">
-            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-${idx}" id="faq-btn-${idx}">
-              <span>${item.q}</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-panel" id="faq-panel-${idx}" role="region" aria-labelledby="faq-btn-${idx}" hidden>
-              ${item.a}
-            </div>
-          </div>
-        `).join('');
-
-        list.querySelectorAll('.faq-trigger').forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const expanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-            const panel = document.getElementById(btn.getAttribute('aria-controls'));
-            if (panel) panel.hidden = expanded;
-          });
-        });
-      }
-
-      function renderPolicies() {
-        const sec = document.getElementById('security-list');
-        const priv = document.getElementById('privacy-list');
-        if (sec) sec.innerHTML = SECURITY_LIST[currentLang].map((x) => `<li>${x}</li>`).join('');
-        if (priv) priv.innerHTML = PRIVACY_LIST[currentLang].map((x) => `<li>${x}</li>`).join('');
-      }
-
-      /* ===========================
-       * 4. Centralized GitHub API
-       * =========================== */
-      const GitHubDataService = {
-        CACHE_KEY: 'gooose_gh_cache_v1',
-        state: {
-          status: 'loading', // loading | live | cached | unavailable
-          repo: null,
-          latest: null,
-          releases: null,
-          error: null
-        },
-
-        readCache() {
-          try {
-            const raw = localStorage.getItem(this.CACHE_KEY);
-            return raw ? JSON.parse(raw) : null;
-          } catch (e) {
-            return null;
-          }
-        },
-
-        writeCache(payload) {
-          try {
-            localStorage.setItem(this.CACHE_KEY, JSON.stringify(payload));
-          } catch (e) {}
-        },
-
-        async fetchWithETag(url, prevEntry) {
-          const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-          const headers = { Accept: 'application/vnd.github+json' };
-          if (prevEntry && prevEntry.etag) {
-            headers['If-None-Match'] = prevEntry.etag;
-          }
-          try {
-            const res = await fetch(url, { headers, signal: controller.signal });
-            if (res.status === 304 && prevEntry && prevEntry.data) {
-              return { data: prevEntry.data, etag: prevEntry.etag, from304: true };
-            }
-            if (!res.ok) {
-              const err = new Error('HTTP_' + res.status);
-              err.status = res.status;
-              throw err;
-            }
-            const json = await res.json();
-            if (!json || typeof json !== 'object') {
-              throw new Error('INVALID_JSON');
-            }
-            return { data: json, etag: res.headers.get('ETag') || null, from304: false };
-          } finally {
-            clearTimeout(timer);
-          }
-        },
-
-        async load(forceRefresh = false) {
-          const cached = this.readCache();
-          const now = Date.now();
-          if (!forceRefresh && cached && cached.timestamp && (now - cached.timestamp) < CACHE_TTL_MS && cached.repo && cached.latest && Array.isArray(cached.releases)) {
-            this.state = { status: 'live', repo: cached.repo.data, latest: cached.latest.data, releases: cached.releases.data, error: null };
-            renderGitHubUI();
-            return;
-          }
-
-          this.state.status = 'loading';
-          renderGitHubUI();
-
-          const base = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
-          try {
-            const [repoRes, latestRes, releasesRes] = await Promise.all([
-              this.fetchWithETag(base, cached && cached.repo),
-              this.fetchWithETag(`${base}/releases/latest`, cached && cached.latest),
-              this.fetchWithETag(`${base}/releases?per_page=20`, cached && cached.releases)
-            ]);
-
-            if (!Array.isArray(releasesRes.data)) throw new Error('INVALID_RELEASES');
-
-            const nextCache = {
-              timestamp: now,
-              repo: { data: repoRes.data, etag: repoRes.etag },
-              latest: { data: latestRes.data, etag: latestRes.etag },
-              releases: { data: releasesRes.data, etag: releasesRes.etag }
-            };
-            this.writeCache(nextCache);
-            this.state = {
-              status: 'live',
-              repo: repoRes.data,
-              latest: latestRes.data,
-              releases: releasesRes.data,
-              error: null
-            };
-          } catch (err) {
-            if (cached && cached.repo && cached.latest && cached.releases) {
-              this.state = {
-                status: 'cached',
-                repo: cached.repo.data,
-                latest: cached.latest.data,
-                releases: cached.releases.data,
-                error: err.message
-              };
-            } else {
-              this.state = {
-                status: 'unavailable',
-                repo: null,
-                latest: null,
-                releases: null,
-                error: err.message
-              };
-            }
-          }
-          renderGitHubUI();
-        }
-      };
-
-      function formatBytes(bytes) {
-        if (typeof bytes !== 'number' || !Number.isFinite(bytes) || bytes <= 0) return '—';
-        const mb = bytes / (1024 * 1024);
-        return mb >= 1 ? mb.toFixed(2) + ' MB' : Math.round(bytes / 1024) + ' KB';
-      }
-
-      function formatDate(iso) {
-        if (!iso) return '—';
-        const d = new Date(iso);
-        if (Number.isNaN(d.getTime())) return '—';
-        return d.toLocaleDateString(currentLang === 'zh-TW' ? 'zh-TW' : 'en-US', {
-          year: 'numeric', month: 'short', day: 'numeric'
-        });
-      }
-
-      function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      }
-
-      function renderGitHubUI() {
-        const { status, repo, latest, releases } = GitHubDataService.state;
-        const statusTextEl = document.getElementById('api-status-text');
-        const starsEl = document.getElementById('hero-stars');
-        const heroVerEl = document.getElementById('hero-version');
-        const dlTitleEl = document.getElementById('dl-release-title');
-        const dlVerEl = document.getElementById('dl-version');
-        const dlDateEl = document.getElementById('dl-date');
-        const dlSizeEl = document.getElementById('dl-size');
-        const btnArm = document.getElementById('btn-dl-arm64');
-        const btnIntel = document.getElementById('btn-dl-intel');
-        const shaEl = document.getElementById('dl-sha256');
-        const copyBtn = document.getElementById('btn-copy-sha');
-        const notesEl = document.getElementById('dl-release-notes');
-        const changelogList = document.getElementById('changelog-list');
-
-        if (statusTextEl) {
-          if (status === 'loading') statusTextEl.textContent = I18N[currentLang]['api.loading'];
-          else if (status === 'live') statusTextEl.textContent = '🟢 ' + I18N[currentLang]['api.live'];
-          else if (status === 'cached') statusTextEl.textContent = '🟡 ' + I18N[currentLang]['api.cached'];
-          else statusTextEl.textContent = '🔴 ' + I18N[currentLang]['api.unavailable'];
-        }
-
-        if (status === 'unavailable' || (!repo && !latest)) {
-          const unavailText = currentLang === 'zh-TW' ? '無法取得' : 'Unavailable';
-          if (starsEl) starsEl.textContent = status === 'loading' ? '…' : unavailText;
-          if (heroVerEl) heroVerEl.textContent = status === 'loading' ? '…' : unavailText;
-          if (status === 'unavailable') {
-            if (dlTitleEl) dlTitleEl.textContent = unavailText;
-            if (dlVerEl) dlVerEl.textContent = unavailText;
-            if (dlDateEl) dlDateEl.textContent = unavailText;
-            if (dlSizeEl) dlSizeEl.textContent = unavailText;
-            if (shaEl) shaEl.textContent = unavailText;
-            if (copyBtn) copyBtn.disabled = true;
-            if (notesEl) notesEl.textContent = I18N[currentLang]['api.unavailable'];
-            if (changelogList) changelogList.innerHTML = `<div class="release-card"><p style="margin:0;color:var(--muted);">${I18N[currentLang]['api.unavailable']}</p></div>`;
-          }
-          return;
-        }
-
-        if (repo && starsEl) {
-          starsEl.textContent = typeof repo.stargazers_count === 'number' ? String(repo.stargazers_count) : '—';
-        }
-
-        if (latest) {
-          const tag = latest.tag_name || '—';
-          if (heroVerEl) heroVerEl.textContent = tag;
-          if (dlTitleEl) dlTitleEl.textContent = latest.name || tag;
-          if (dlVerEl) dlVerEl.textContent = tag;
-          if (dlDateEl) dlDateEl.textContent = formatDate(latest.published_at);
-
-          const assets = Array.isArray(latest.assets) ? latest.assets : [];
-          const armAsset = assets.find((a) => /arm64|apple[-_]?silicon/i.test(a.name || '') && /\.dmg$/i.test(a.name || ''))
-            || assets.find((a) => /\.dmg$/i.test(a.name || ''));
-          const intelAsset = assets.find((a) => /(intel|x86_64|amd64|universal)/i.test(a.name || '') && /\.(dmg|zip)$/i.test(a.name || ''));
-
-          if (armAsset && armAsset.browser_download_url) {
-            btnArm.href = armAsset.browser_download_url;
-            btnArm.setAttribute('download', armAsset.name || '');
-            btnArm.textContent = `${I18N[currentLang]['dl.btnArm']} (${armAsset.name})`;
-            if (dlSizeEl) dlSizeEl.textContent = formatBytes(armAsset.size);
-
-            const digest = armAsset.digest ? String(armAsset.digest).replace(/^sha256:/i, '') : '';
-            if (digest) {
-              shaEl.textContent = digest;
-              copyBtn.disabled = false;
-              copyBtn.dataset.sha = digest;
-            } else {
-              shaEl.textContent = I18N[currentLang]['dl.shaMissing'];
-              copyBtn.disabled = true;
-            }
-          } else {
-            btnArm.href = latest.html_url || 'https://github.com/li-bao/gooose/releases/latest';
-            btnArm.removeAttribute('download');
-            if (dlSizeEl) dlSizeEl.textContent = '—';
-            shaEl.textContent = I18N[currentLang]['dl.shaMissing'];
-            copyBtn.disabled = true;
-          }
-
-          if (intelAsset && intelAsset.browser_download_url) {
-            btnIntel.style.display = 'inline-flex';
-            btnIntel.href = intelAsset.browser_download_url;
-            btnIntel.textContent = `${I18N[currentLang]['dl.btnIntel']} (${intelAsset.name})`;
-          } else {
-            btnIntel.style.display = 'none';
-          }
-
-          if (notesEl) {
-            notesEl.textContent = latest.body ? latest.body.trim() : '—';
-          }
-        }
-
-        if (Array.isArray(releases) && changelogList) {
-          if (releases.length === 0) {
-            changelogList.innerHTML = `<div class="release-card"><p style="margin:0;color:var(--muted);">No releases found.</p></div>`;
-            return;
-          }
-          changelogList.innerHTML = releases.map((rel, idx) => {
-            const body = (rel.body || '').trim();
-            const lines = body.split(/\r?\n/).map((l) => l.trim()).filter((l) => l.startsWith('- ') || l.startsWith('* '));
-            const summaryHtml = lines.length > 0
-              ? `<ul style="margin:0;padding-left:18px;color:var(--muted);">${lines.slice(0, 5).map((l) => `<li>${escapeHtml(l.slice(2))}</li>`).join('')}</ul>`
-              : `<p style="margin:0;color:var(--muted);">${escapeHtml(body || 'No release notes provided.')}</p>`;
-            const origBadge = currentLang === 'zh-TW'
-              ? `<span class="release-lang-note">${I18N['zh-TW']['cl.origLang']}</span>`
-              : '';
-            return `
-              <article class="release-card">
-                <div class="release-head">
-                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <span class="release-tag">${escapeHtml(rel.tag_name || '')}</span>
-                    <strong>${escapeHtml(rel.name || rel.tag_name || '')}</strong>
-                    ${origBadge}
-                  </div>
-                  <span style="color:var(--muted);font-size:0.88rem;">${formatDate(rel.published_at)}</span>
-                </div>
-                ${summaryHtml}
-                ${body ? `
-                  <details style="margin-top:12px;">
-                    <summary style="cursor:pointer;font-weight:700;font-size:0.88rem;">${I18N[currentLang]['cl.rawToggle']}</summary>
-                    <pre class="release-body-raw">${escapeHtml(body)}</pre>
-                  </details>
-                ` : ''}
-              </article>
-            `;
-          }).join('');
-        }
-      }
-
-      /* ===========================
-       * 5. Interactive Goose Engine
-       * =========================== */
-      const GOOSE_QUOTES = {
-        'zh-TW': [
-          '嘎！這個游標我看上了。',
-          '今天的工作進度⋯⋯先讓我踩兩腳。',
-          '我不是搗蛋，我是在幫你舒壓！',
-          '給我麵包，不然我就拖出十張迷因。',
-          '嘎嘎嘎！別想點那個按鈕。',
-          '其實我是 SwiftUI 寫出來的鵝。',
-          '注意看，我要開始散步了。'
-        ],
-        en: [
-          'HONK! That cursor looks mine.',
-          'Your productivity? Let me step on it.',
-          'I am not chaotic, I am an enrichment feature!',
-          'Feed me bread or I drag out ten memes.',
-          'HONK HONK! Do not click that button.',
-          'Fun fact: my desktop twin is built in Swift.',
-          'Watch out, professional waddler coming through.'
-        ]
-      };
-
-      const FOOD_QUOTES = {
-        'zh-TW': {
-          bread: '嚼嚼⋯⋯是吐司！今天的混亂減半！',
-          corn: '玉米超讚！體力值直接補滿！',
-          berry: '酸甜草莓！本鵝決定當 10 秒乖寶寶。'
-        },
-        en: {
-          bread: 'Nom nom… Toast! Chaos reduced by 50%!',
-          corn: 'Corn!! Energy fully restored!',
-          berry: 'Sweet strawberry! Being a good goose for 10s.'
-        }
-      };
-
-      const GOOSE_NAMES = ['Gooose', 'Honk Jr.', 'Toast', 'Biscuit', 'Noodle'];
-      const ACCESSORIES = ['none', 'bow', 'scarf', 'cap', 'glasses'];
-      const arena = document.getElementById('goose-arena');
-      const rosterEl = document.getElementById('family-roster');
-      const countEl = document.getElementById('arena-count');
-      let geese = [];
-      let nextGooseId = 1;
-      let activeFood = null;
-      let allSleeping = false;
-      const reducedMotionQuery = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-
-      function getGooseSVG(accessory) {
-        let accSvg = '';
-        if (accessory === 'bow') {
-          accSvg = '<path d="M54 29l7-4v8l-7-4zm0 0l-7-4v8l7-4z" fill="#F27D3B" stroke="#2B201A" stroke-width="2"/>';
-        } else if (accessory === 'scarf') {
-          accSvg = '<path d="M46 42c6 3 13 3 18 0v6c-5 3-12 3-18 0z" fill="#F6C945" stroke="#2B201A" stroke-width="2"/>';
-        } else if (accessory === 'cap') {
-          accSvg = '<path d="M47 16c3-7 16-7 19 0z" fill="#5CB882" stroke="#2B201A" stroke-width="2"/><path d="M62 16h10" stroke="#2B201A" stroke-width="2.5" stroke-linecap="round"/>';
-        } else if (accessory === 'glasses') {
-          accSvg = '<circle cx="57" cy="23" r="4.5" fill="none" stroke="#2B201A" stroke-width="2"/><path d="M52 23h-4" stroke="#2B201A" stroke-width="2"/>';
-        }
-        return `
-          <svg viewBox="0 0 90 90" fill="none" aria-hidden="true">
-            <ellipse cx="38" cy="60" rx="22" ry="14" fill="#FFFFFF" stroke="#2B201A" stroke-width="3"/>
-            <path d="M50 54c2-12 1-23 2-30 1-6 6-10 11-9 5 1 8 5 7 10-1 4-4 6-8 6-1 8-1 18-4 25" fill="#FFFFFF" stroke="#2B201A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M27 56c-6 1-10 5-8 9 2 3 9 2 14 0" fill="#FDF6E8" stroke="#2B201A" stroke-width="2.6" stroke-linecap="round"/>
-            <path d="M68 24l11 3.5-11 4z" fill="#F27D3B" stroke="#2B201A" stroke-width="2.4" stroke-linejoin="round"/>
-            <circle cx="62" cy="22.5" r="2.2" fill="#2B201A"/>
-            <path d="M33 74v8m0 0l-4 2m4-2l4 2M46 74v8m0 0l-4 2m4-2l4 2" stroke="#F27D3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            ${accSvg}
-          </svg>
-        `;
-      }
-
-      function clampGoosePos(x, y) {
-        const w = arena ? arena.clientWidth : 600;
-        const h = arena ? arena.clientHeight : 400;
-        return {
-          x: Math.max(8, Math.min(w - 104, x)),
-          y: Math.max(40, Math.min(h - 104, y))
-        };
-      }
-
-      function setGooseState(g, state) {
-        g.state = state;
-        g.el.dataset.state = state;
-        const zzz = g.el.querySelector('.goose-zzz');
-        if (zzz) zzz.style.display = state === 'SLEEPING' ? 'block' : 'none';
-      }
-
-      function showGooseBubble(g, text, duration = 2600) {
-        let bubble = g.el.querySelector('.goose-bubble');
-        if (!bubble) {
-          bubble = document.createElement('div');
-          bubble.className = 'goose-bubble';
-          g.el.appendChild(bubble);
-        }
-        bubble.textContent = text;
-        clearTimeout(g.bubbleTimer);
-        g.bubbleTimer = setTimeout(() => {
-          if (bubble.parentNode) bubble.remove();
-        }, duration);
-      }
-
-      function spawnGoose() {
-        if (!arena || geese.length >= MAX_GEESE) return;
-        const idx = geese.length;
-        const id = nextGooseId++;
-        const name = GOOSE_NAMES[idx] || ('Goose ' + id);
-        const acc = ACCESSORIES[idx % ACCESSORIES.length];
-        const w = arena.clientWidth || 600;
-        const h = arena.clientHeight || 400;
-        const pos = clampGoosePos(40 + idx * 95, h - 135 - (idx % 2) * 35);
-
-        const el = document.createElement('div');
-        el.className = 'goose-actor';
-        el.tabIndex = 0;
-        el.setAttribute('role', 'button');
-        el.setAttribute('aria-label', name);
-        el.dataset.state = 'IDLE';
-        el.dataset.dir = '1';
-        el.style.left = pos.x + 'px';
-        el.style.top = pos.y + 'px';
-        el.innerHTML = `
-          <span class="goose-zzz" style="display:none;" aria-hidden="true">Zzz</span>
-          <div class="goose-sprite-wrap">${getGooseSVG(acc)}</div>
-          <span class="goose-name-tag">${name}</span>
-        `;
-
-        const g = {
-          id, name, acc, el,
-          x: pos.x, y: pos.y,
-          targetX: pos.x, targetY: pos.y,
-          dir: 1,
-          state: 'IDLE',
-          nextDecisionAt: performance.now() + 1200 + idx * 400,
-          bubbleTimer: null,
-          dragMoved: false
-        };
-
-        // Pointer Events with Pointer Capture
-        let startPointerX = 0, startPointerY = 0, startGooseX = 0, startGooseY = 0;
-        let isDragging = false;
-
-        el.addEventListener('pointerdown', (e) => {
-          if (e.button !== 0 && e.pointerType === 'mouse') return;
-          e.preventDefault();
-          isDragging = true;
-          g.dragMoved = false;
-          startPointerX = e.clientX;
-          startPointerY = e.clientY;
-          startGooseX = g.x;
-          startGooseY = g.y;
-          setGooseState(g, 'DRAGGING');
-          try { el.setPointerCapture(e.pointerId); } catch (err) {}
-        });
-
-        el.addEventListener('pointermove', (e) => {
-          if (!isDragging) return;
-          const dx = e.clientX - startPointerX;
-          const dy = e.clientY - startPointerY;
-          if (Math.hypot(dx, dy) > 5) g.dragMoved = true;
-          if (dx !== 0) {
-            g.dir = dx >= 0 ? 1 : -1;
-            el.dataset.dir = String(g.dir);
-          }
-          const clamped = clampGoosePos(startGooseX + dx, startGooseY + dy);
-          g.x = clamped.x;
-          g.y = clamped.y;
-          el.style.left = g.x + 'px';
-          el.style.top = g.y + 'px';
-        });
-
-        const endDrag = (e) => {
-          if (!isDragging) return;
-          isDragging = false;
-          try { el.releasePointerCapture(e.pointerId); } catch (err) {}
-          if (!g.dragMoved) {
-            triggerGooseClick(g);
-          } else {
-            setGooseState(g, 'IDLE');
-            g.nextDecisionAt = performance.now() + 1500;
-          }
-        };
-        el.addEventListener('pointerup', endDrag);
-        el.addEventListener('pointercancel', endDrag);
-
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            triggerGooseClick(g);
-          } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
-            e.preventDefault();
-            const step = 18;
-            let nx = g.x, ny = g.y;
-            if (e.key === 'ArrowLeft') { nx -= step; g.dir = -1; }
-            if (e.key === 'ArrowRight') { nx += step; g.dir = 1; }
-            if (e.key === 'ArrowUp') ny -= step;
-            if (e.key === 'ArrowDown') ny += step;
-            const c = clampGoosePos(nx, ny);
-            g.x = c.x; g.y = c.y;
-            el.dataset.dir = String(g.dir);
-            el.style.left = g.x + 'px';
-            el.style.top = g.y + 'px';
-          }
-        });
-
-        arena.appendChild(el);
-        geese.push(g);
-        updateFamilyUI();
-      }
-
-      function triggerGooseClick(g) {
-        const list = GOOSE_QUOTES[currentLang];
-        const quote = list[Math.floor(Math.random() * list.length)];
-        setGooseState(g, 'JUMPING');
-        showGooseBubble(g, quote);
-        setTimeout(() => {
-          if (g.state === 'JUMPING') setGooseState(g, 'IDLE');
-        }, 580);
-      }
-
-      function updateFamilyUI() {
-        if (countEl) countEl.textContent = `${geese.length} / ${MAX_GEESE}`;
-        const addBtn = document.getElementById('btn-add-goose');
-        if (addBtn) addBtn.disabled = geese.length >= MAX_GEESE;
-        if (rosterEl) {
-          rosterEl.innerHTML = geese.map((g) => `<span class="roster-chip">🪿 ${g.name}</span>`).join('');
-        }
-      }
-
-      function dropFood(foodKey, emoji) {
-        if (!arena || geese.length === 0) return;
-        if (activeFood && activeFood.el.parentNode) activeFood.el.remove();
-
-        const w = arena.clientWidth || 600;
-        const h = arena.clientHeight || 400;
-        const fx = 60 + Math.random() * Math.max(80, w - 140);
-        const fy = 80 + Math.random() * Math.max(80, h - 160);
-
-        const foodEl = document.createElement('div');
-        foodEl.className = 'food-drop';
-        foodEl.textContent = emoji;
-        foodEl.style.left = fx + 'px';
-        foodEl.style.top = fy + 'px';
-        arena.appendChild(foodEl);
-
-        activeFood = { key: foodKey, x: fx, y: fy, el: foodEl };
-
-        // Pick nearest non-dragging goose
-        let best = null, bestDist = Infinity;
-        for (const g of geese) {
-          if (g.state === 'DRAGGING') continue;
-          const d = Math.hypot(g.x - fx, g.y - fy);
-          if (d < bestDist) { bestDist = d; best = g; }
-        }
-        if (best) {
-          const target = clampGoosePos(fx - 36, fy - 42);
-          best.targetX = target.x;
-          best.targetY = target.y;
-          setGooseState(best, 'WALKING');
-        }
-      }
-
-      let lastTick = performance.now();
-      function tickPlayground(now) {
-        const dt = Math.min(0.05, (now - lastTick) / 1000);
-        lastTick = now;
-        const reduced = reducedMotionQuery && reducedMotionQuery.matches;
-
-        for (const g of geese) {
-          if (g.state === 'DRAGGING' || g.state === 'JUMPING' || g.state === 'EATING') continue;
-
-          if (g.state === 'WALKING') {
-            const dx = g.targetX - g.x;
-            const dy = g.targetY - g.y;
-            const dist = Math.hypot(dx, dy);
-            if (dist < 6) {
-              g.x = g.targetX;
-              g.y = g.targetY;
-              g.el.style.left = g.x + 'px';
-              g.el.style.top = g.y + 'px';
-
-              if (activeFood && Math.hypot((g.x + 36) - activeFood.x, (g.y + 42) - activeFood.y) < 35) {
-                const foodKey = activeFood.key;
-                if (activeFood.el.parentNode) activeFood.el.remove();
-                activeFood = null;
-                setGooseState(g, 'EATING');
-                showGooseBubble(g, FOOD_QUOTES[currentLang][foodKey]);
-                setTimeout(() => {
-                  if (g.state === 'EATING') setGooseState(g, 'IDLE');
-                }, 1600);
-              } else {
-                setGooseState(g, 'IDLE');
-                g.nextDecisionAt = now + 1800 + Math.random() * 2400;
-              }
-            } else {
-              const speed = reduced ? 180 : 95;
-              const step = Math.min(dist, speed * dt);
-              g.x += (dx / dist) * step;
-              g.y += (dy / dist) * step;
-              g.dir = dx >= 0 ? 1 : -1;
-              g.el.dataset.dir = String(g.dir);
-              g.el.style.left = g.x + 'px';
-              g.el.style.top = g.y + 'px';
-            }
-          } else if (now >= g.nextDecisionAt && !reduced) {
-            if (g.state === 'SLEEPING') {
-              if (!allSleeping && Math.random() < 0.35) {
-                setGooseState(g, 'IDLE');
-              }
-              g.nextDecisionAt = now + 2600 + Math.random() * 2000;
-            } else {
-              const roll = Math.random();
-              if (roll < 0.58) {
-                const w = arena.clientWidth || 600;
-                const h = arena.clientHeight || 400;
-                const next = clampGoosePos(20 + Math.random() * (w - 130), 60 + Math.random() * (h - 170));
-                g.targetX = next.x;
-                g.targetY = next.y;
-                setGooseState(g, 'WALKING');
-              } else if (roll < 0.78) {
-                setGooseState(g, 'SLEEPING');
-                g.nextDecisionAt = now + 3500 + Math.random() * 2500;
-              } else {
-                g.nextDecisionAt = now + 1800 + Math.random() * 1800;
-              }
-            }
-          }
-        }
-
-        requestAnimationFrame(tickPlayground);
-      }
-
-      /* ===========================
-       * 6. Lightbox
-       * =========================== */
-      const lightbox = document.getElementById('lightbox');
-      const lightboxWrap = document.getElementById('lightbox-media-wrap');
-      const lightboxTitle = document.getElementById('lightbox-title');
-      let lastFocusBeforeLightbox = null;
-
-      function openLightboxImage(src, alt, title) {
-        lastFocusBeforeLightbox = document.activeElement;
-        lightboxTitle.textContent = title;
-        lightboxWrap.innerHTML = `<img src="${src}" alt="${escapeHtml(alt)}" />`;
-        lightbox.classList.add('open');
-        document.getElementById('lightbox-close').focus();
-      }
-
-      function closeLightbox() {
-        lightbox.classList.remove('open');
-        lightboxWrap.innerHTML = '';
-        if (lastFocusBeforeLightbox && typeof lastFocusBeforeLightbox.focus === 'function') {
-          lastFocusBeforeLightbox.focus();
-        }
-      }
-
-      /* ===========================
-       * 7. Event Wiring & Init
-       * =========================== */
-      document.getElementById('theme-switch').addEventListener('click', () => {
-        const cur = document.documentElement.dataset.themeMode || 'system';
-        const next = themeOrder[(themeOrder.indexOf(cur) + 1) % themeOrder.length];
-        applyTheme(next);
-      });
-
-      document.getElementById('lang-switch').addEventListener('click', () => {
-        const hash = window.location.hash || '';
-        if (window.location.protocol === 'file:') {
-          applyTranslations(currentLang === 'zh-TW' ? 'en' : 'zh-TW');
-          return;
-        }
-        const target = currentLang === 'zh-TW' ? ('en/' + hash) : ('../' + hash);
-        window.location.href = target;
-      });
-
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const mobileDrawer = document.getElementById('mobile-drawer');
-      mobileBtn.addEventListener('click', () => {
-        const open = mobileDrawer.classList.toggle('open');
-        mobileBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      mobileDrawer.querySelectorAll('a').forEach((a) => {
-        a.addEventListener('click', () => {
-          mobileDrawer.classList.remove('open');
-          mobileBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      document.getElementById('btn-add-goose').addEventListener('click', spawnGoose);
-      document.getElementById('btn-jump-all').addEventListener('click', () => {
-        geese.forEach((g) => {
-          if (g.state === 'DRAGGING') return;
-          setGooseState(g, 'JUMPING');
-          setTimeout(() => { if (g.state === 'JUMPING') setGooseState(g, 'IDLE'); }, 580);
-        });
-      });
-      document.getElementById('btn-sleep-toggle').addEventListener('click', () => {
-        allSleeping = !allSleeping;
-        geese.forEach((g) => {
-          if (g.state !== 'DRAGGING') setGooseState(g, allSleeping ? 'SLEEPING' : 'IDLE');
-        });
-      });
-      document.getElementById('btn-reset-geese').addEventListener('click', () => {
-        geese.forEach((g) => g.el.remove());
-        geese = [];
-        allSleeping = false;
-        spawnGoose();
-      });
-      document.querySelectorAll('.feed-btn').forEach((btn) => {
-        btn.addEventListener('click', () => dropFood(btn.dataset.food, btn.dataset.emoji));
-      });
-
-      document.getElementById('open-lightbox-screenshot').addEventListener('click', () => {
-        const img = document.getElementById('gallery-screenshot-img');
-        openLightboxImage(img.src, img.alt, I18N[currentLang]['gallery.shotTitle']);
-      });
-      document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
-      });
-
-      document.getElementById('btn-refresh-api').addEventListener('click', () => {
-        GitHubDataService.load(true);
-      });
-      document.getElementById('btn-copy-sha').addEventListener('click', async function () {
-        const sha = this.dataset.sha;
-        if (!sha) return;
-        try {
-          await navigator.clipboard.writeText(sha);
-          const old = this.textContent;
-          this.textContent = I18N[currentLang]['dl.copied'];
-          setTimeout(() => { this.textContent = I18N[currentLang]['dl.copySha']; }, 1500);
-        } catch (e) {}
-      });
-
-      // Initialize
-      applyTranslations(defaultLang);
-      applyTheme(document.documentElement.dataset.themeMode || 'system');
-      spawnGoose();
-      requestAnimationFrame(tickPlayground);
-      GitHubDataService.load(false);
-    })();
-  </script>
+  <script src="../js/sound.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/github.js"></script>
+  <script src="../js/cursor.js"></script>
+  <script src="../js/gooose-ai.js"></script>
+  <script src="../js/hero-goose.js"></script>
+  <script src="../js/playground.js"></script>
+  <script src="../js/games.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
