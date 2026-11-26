@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://gooose.runs-at.dev/sitemap.xml
