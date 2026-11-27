@@ -150,8 +150,13 @@
       }
     }
 
+    let rafId = null;
     let last = performance.now();
     function tick(now) {
+      if (!document.body.contains(canvas)) {
+        rafId = null;
+        return;
+      }
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       const reduced = (reducedQuery && reducedQuery.matches) || document.documentElement.dataset.reducedMotion === 'true';
@@ -236,7 +241,7 @@
 
         drawGoose(goose);
       }
-      requestAnimationFrame(tick);
+      rafId = requestAnimationFrame(tick);
     }
 
     canvas.addEventListener('pointermove', (e) => {
@@ -256,7 +261,12 @@
 
     window.addEventListener('resize', resize);
     resize();
-    requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick);
+
+    return function destroyHero() {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', resize);
+    };
   }
 
   global.initHeroGoose = initHeroGoose;

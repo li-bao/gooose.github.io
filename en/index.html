@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-default-lang="en">
+<html lang="en" data-default-lang="en" data-initial-route="home" data-asset-root="../">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#FFFBF2" id="meta-theme-color" />
   <title>gooose — A little chaos on your desktop. | Your Desktop. Their Playground.</title>
-  <meta name="description" content="A little chaos on your desktop. Your Desktop. Their Playground. gooose is an open-source macOS desktop pet by Li-bao." />
+  <meta name="description" content="A little chaos on your desktop. Your Desktop. Their Playground. Open-source macOS desktop pet by Li-bao." />
   <link rel="canonical" href="https://gooose.runs-at.dev/en/" />
   <link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/" />
   <link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/" />
   <link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="gooose" />
-  <meta property="og:title" content="gooose — A little chaos on your desktop." />
-  <meta property="og:description" content="Your Desktop. Their Playground. Open-source macOS desktop goose by Li-bao." />
+  <meta property="og:title" content="gooose — A little chaos on your desktop. | Your Desktop. Their Playground." />
+  <meta property="og:description" content="A little chaos on your desktop. Your Desktop. Their Playground. Open-source macOS desktop pet by Li-bao." />
   <meta property="og:url" content="https://gooose.runs-at.dev/en/" />
   <meta property="og:image" content="https://gooose.runs-at.dev/assets/screenshot-macos.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main-content" data-i18n="skip">跳至主要內容</a>
+  <a class="skip-link" href="#page-root" data-i18n="skip">跳至主要內容</a>
 
   <div class="loading-goose-pill hidden" id="loading-goose-pill" role="status" aria-live="polite">
     <span aria-hidden="true">🪿</span>
@@ -51,7 +51,7 @@
 
   <header class="topbar">
     <div class="wrap nav-inner">
-      <a class="brand" href="#home" id="brand-logo" aria-label="gooose Home">
+      <a class="brand" href="/" data-route="home" id="brand-logo" aria-label="gooose Home">
         <span class="brand-badge" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
             <path d="M16 46c0-9 5-14 11-16V18c0-5 4-9 9-9s8 3.5 8 7.5c0 2.5-1.4 4.5-3.4 5.5l6.4 2.2c1.5.5 1.5 2.6 0 3.1l-6.6 2.1c-.4 5.5-2.6 10.6-7.4 14.6-4.5 3.7-17 3.7-17 0z" fill="#FFFFFF" stroke="#2B201A" stroke-width="4" stroke-linejoin="round"/>
@@ -64,19 +64,20 @@
 
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="#home" data-i18n="nav.home">首頁</a></li>
-          <li><a href="#features" data-i18n="nav.features">特色</a></li>
-          <li><a href="#playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
-          <li><a href="#games" data-i18n="nav.games">小遊戲</a></li>
-          <li><a href="#gallery" data-i18n="nav.gallery">畫面</a></li>
-          <li><a href="#download" data-i18n="nav.download">下載</a></li>
-          <li><a href="#docs" data-i18n="nav.docs">文件</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-          <li><a href="#changelog" data-i18n="nav.changelog">更新日誌</a></li>
+          <li><a href="/" data-route="home" data-i18n="nav.home">首頁</a></li>
+          <li><a href="/features/" data-route="features" data-i18n="nav.features">特色</a></li>
+          <li><a href="/playground/" data-route="playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
+          <li><a href="/games/" data-route="games" data-i18n="nav.games">小遊戲</a></li>
+          <li><a href="/gallery/" data-route="gallery" data-i18n="nav.gallery">畫面</a></li>
+          <li><a href="/download/" data-route="download" data-i18n="nav.download">下載</a></li>
+          <li><a href="/docs/" data-route="docs" data-i18n="nav.docs">文件</a></li>
+          <li><a href="/faq/" data-route="faq" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="/goose-ai/" data-route="goose-ai" data-i18n="nav.gooseAi">goooseAI</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
+        <button type="button" class="pill-switch" id="global-search-btn" aria-label="Search">🔍 <span class="hide-xs" data-i18n="nav.search">搜尋</span></button>
         <button type="button" class="pill-switch" id="cursor-switch" aria-pressed="true" title="Toggle Goose Cursor">🪿</button>
         <button type="button" class="pill-switch" id="sound-switch" aria-pressed="false" title="Toggle Sound">🔇</button>
         <button type="button" class="pill-switch" id="motion-switch" aria-pressed="false" title="Toggle Reduced Motion">✨</button>
@@ -93,378 +94,22 @@
 
     <div class="mobile-drawer" id="mobile-drawer">
       <ul>
-        <li><a href="#home" data-i18n="nav.home">首頁</a></li>
-        <li><a href="#features" data-i18n="nav.features">特色</a></li>
-        <li><a href="#playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
-        <li><a href="#games" data-i18n="nav.games">小遊戲</a></li>
-        <li><a href="#gallery" data-i18n="nav.gallery">畫面</a></li>
-        <li><a href="#download" data-i18n="nav.download">下載</a></li>
-        <li><a href="#docs" data-i18n="nav.docs">文件</a></li>
-        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="#changelog" data-i18n="nav.changelog">更新日誌</a></li>
+        <li><a href="/" data-route="home" data-i18n="nav.home">首頁</a></li>
+        <li><a href="/features/" data-route="features" data-i18n="nav.features">特色</a></li>
+        <li><a href="/playground/" data-route="playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
+        <li><a href="/games/" data-route="games" data-i18n="nav.games">小遊戲</a></li>
+        <li><a href="/gallery/" data-route="gallery" data-i18n="nav.gallery">畫面</a></li>
+        <li><a href="/download/" data-route="download" data-i18n="nav.download">下載</a></li>
+        <li><a href="/docs/" data-route="docs" data-i18n="nav.docs">文件</a></li>
+        <li><a href="/faq/" data-route="faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/changelog/" data-route="changelog" data-i18n="nav.changelog">更新日誌</a></li>
+        <li><a href="/security/" data-route="security" data-i18n="nav.security">安全與隱私</a></li>
+        <li><a href="/goose-ai/" data-route="goose-ai" data-i18n="nav.gooseAi">goooseAI</a></li>
       </ul>
     </div>
   </header>
 
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="wrap hero-grid">
-        <div>
-          <span class="eyebrow" data-i18n="hero.eyebrow">macOS Apple Silicon · 開源桌面寵物</span>
-          <h1 class="hero-title" data-i18n="hero.title">給你的桌面添一點可愛混亂。</h1>
-          <p class="hero-subtitle" data-i18n="hero.subtitle">你的桌面，牠們的遊樂場。</p>
-          <p class="hero-lead" data-i18n="hero.lead">
-            gooose 是由 Li-bao 開發的原生 macOS 桌面寵物。牠會在螢幕上散步、搶走你的滑鼠游標、從螢幕邊緣拖出迷因與便利貼，並支援最多 5 隻鵝的 Goose Family。
-          </p>
-
-          <div class="hero-stats">
-            <span class="stat-pill">⭐ <span data-i18n="hero.starsLabel">Stars：</span><strong id="hero-stars">…</strong></span>
-            <span class="stat-pill">🍴 <span data-i18n="hero.forksLabel">Forks：</span><strong id="hero-forks">…</strong></span>
-            <span class="stat-pill">📦 <span data-i18n="hero.releasesLabel">Releases：</span><strong id="hero-releases-count">…</strong></span>
-            <span class="stat-pill">🏷️ <span data-i18n="hero.versionLabel">最新版本：</span><strong id="hero-version">…</strong></span>
-          </div>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#download" data-i18n="hero.ctaDownload">下載 gooose</a>
-            <a class="btn btn-accent" href="#features" data-i18n="hero.ctaFeatures">探索特色</a>
-            <a class="btn btn-secondary" href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaGithub">GitHub 專案</a>
-          </div>
-        </div>
-
-        <div class="hero-stage-card">
-          <div class="hero-canvas-wrap">
-            <canvas id="hero-goose-canvas" aria-label="Animated Hero Goose"></canvas>
-            <span class="hero-bump-badge" id="hero-bump-badge">🪿 gooose</span>
-          </div>
-          <div class="hero-stage-footer">
-            <span data-i18n="hero.stageHint">點擊舞台中的 gooose，牠會跳起來並對游標做出反應！</span>
-            <span>Apple Silicon · macOS 26+</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section class="section" id="features">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="features.eyebrow">互動功能特色</span>
-          <h2 class="section-title" data-i18n="features.title">一隻真的住在你電腦裡的鵝</h2>
-          <p class="section-desc" data-i18n="features.desc">以 Swift、SwiftUI、AppKit 與 SpriteKit 原生打造。點擊或滑過下方卡片預覽 gooose 行為。</p>
-        </div>
-        <div class="cards-grid" id="features-grid"></div>
-      </div>
-    </section>
-
-    <!-- Playground 2.0 -->
-    <section class="section" id="playground">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="pg.eyebrow">物理互動沙盒</span>
-          <h2 class="section-title" data-i18n="pg.title">Goose Playground 2.0</h2>
-          <p class="section-desc" data-i18n="pg.desc">具備重力、拋擲動量、碰撞偵測、5 種食物、4 種性格與 5 種遊戲模式的實體 Canvas 遊樂場！</p>
-        </div>
-
-        <div class="playground-shell">
-          <div class="pg-hud">
-            <div class="pg-hud-stats">
-              <span class="pg-hud-badge">Score: <strong id="pg-score">0</strong></span>
-              <span class="pg-hud-badge">Combo: <strong id="pg-combo">x1</strong></span>
-              <span class="pg-hud-badge">Best: <strong id="pg-best">0</strong></span>
-              <span class="pg-hud-badge">Time: <strong id="pg-timer">0s</strong></span>
-              <span class="pg-hud-badge">Geese: <strong id="pg-count">1 / 5</strong></span>
-            </div>
-            <div class="toolbar-group">
-              <select class="pg-select" id="pg-mode" aria-label="Game Mode">
-                <option value="free">Free Play</option>
-                <option value="frenzy">Feeding Frenzy (30s)</option>
-                <option value="catch">Goose Catch (25s)</option>
-                <option value="race">Goose Race</option>
-                <option value="chaos">Chaos Mode</option>
-              </select>
-              <button type="button" class="btn btn-secondary btn-sm" id="pg-pause" data-i18n="pg.pause">暫停</button>
-              <button type="button" class="btn btn-secondary btn-sm" id="pg-reset" data-i18n="pg.reset">重置</button>
-            </div>
-          </div>
-
-          <div class="pg-controls-row">
-            <div class="toolbar-group">
-              <button type="button" class="btn btn-primary btn-sm" id="pg-add-goose">+ Goose</button>
-              <select class="pg-select" id="pg-food-select" aria-label="Select Food">
-                <option value="bread">🍞 Bread</option>
-                <option value="corn">🌽 Corn</option>
-                <option value="strawberry">🍓 Strawberry</option>
-                <option value="cookie">🍪 Cookie</option>
-                <option value="apple">🍎 Apple</option>
-              </select>
-              <button type="button" class="btn btn-accent btn-sm" id="pg-drop-food">Drop Food</button>
-            </div>
-            <div class="toolbar-group">
-              <select class="pg-select" id="pg-personality" aria-label="Personality">
-                <option value="chaotic">Chaotic Goose</option>
-                <option value="lazy">Lazy Goose</option>
-                <option value="hungry">Hungry Goose</option>
-                <option value="sleepy">Sleepy Goose</option>
-              </select>
-              <select class="pg-select" id="pg-hat" aria-label="Hat">
-                <option value="none">No Hat</option>
-                <option value="crown">👑 Crown</option>
-                <option value="cap">🧢 Cap</option>
-                <option value="bow">🎀 Bow</option>
-                <option value="glasses">🕶️ Glasses</option>
-              </select>
-              <select class="pg-select" id="pg-color" aria-label="Color">
-                <option value="#FFFFFF">White</option>
-                <option value="#FFF3C4">Butter</option>
-                <option value="#FFE5D4">Peach</option>
-                <option value="#E8F5E9">Mint</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="arena-canvas-wrap">
-            <canvas id="playground-canvas" aria-label="Goose Playground 2.0 Physics Canvas"></canvas>
-          </div>
-
-          <div class="pg-footer">
-            <div class="pg-counter-bar">
-              <span id="pg-counters-text"></span>
-              <button type="button" class="btn btn-secondary btn-sm" id="pg-reset-counters">Reset Stats</button>
-            </div>
-            <span data-i18n="pg.sandboxNote">🔒 瀏覽器安全沙盒：不要求螢幕錄影或輔助使用權限，不會操作你真正的滑鼠。</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mini-Games -->
-    <section class="section" id="games">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="games.eyebrow">品牌小遊戲</span>
-          <h2 class="section-title" data-i18n="games.title">gooose Arcade 小遊戲</h2>
-          <p class="section-desc" data-i18n="games.desc">兩款完整可玩的小遊戲，支援鍵盤、滑鼠與手機觸控，最高紀錄自動保存在本機。</p>
-        </div>
-
-        <div class="games-grid">
-          <article class="game-card">
-            <div class="game-head">
-              <h3>🍞 Bread Collector</h3>
-              <div class="game-stats">
-                <span>Score: <strong id="bg-score">0</strong></span>
-                <span>Lives: <strong id="bg-lives">❤️❤️❤️</strong></span>
-                <span>Best: <strong id="bg-best">0</strong></span>
-                <button type="button" class="btn btn-primary btn-sm" id="bg-start">Start</button>
-              </div>
-            </div>
-            <div class="game-canvas-box">
-              <canvas id="bread-game-canvas" aria-label="Bread Collector Game"></canvas>
-            </div>
-            <p style="margin:0;color:var(--muted);font-size:0.86rem;">Move with mouse/touch or ←/→ (A/D). Catch 🍞 &amp; 🥐, dodge 💣!</p>
-          </article>
-
-          <article class="game-card">
-            <div class="game-head">
-              <h3>🃏 Goose Memory</h3>
-              <div class="game-stats">
-                <span>Moves: <strong id="mem-moves">0</strong></span>
-                <span>Time: <strong id="mem-timer">0s</strong></span>
-                <span>Best: <strong id="mem-best">—</strong></span>
-                <select class="pg-select" id="mem-diff" aria-label="Memory Difficulty">
-                  <option value="easy">Easy (4×3)</option>
-                  <option value="hard">Hard (4×4)</option>
-                </select>
-                <button type="button" class="btn btn-primary btn-sm" id="mem-restart">Restart</button>
-              </div>
-            </div>
-            <div class="memory-grid" id="memory-grid"></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="section" id="gallery">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="gallery.eyebrow">真實畫面展示</span>
-          <h2 class="section-title" data-i18n="gallery.title">桌面上的真實模樣</h2>
-          <p class="section-desc" data-i18n="gallery.desc">可依類型篩選素材，點擊圖片開啟燈箱（ESC 關閉）。未上傳的動態素材誠實標註於右側。</p>
-        </div>
-
-        <div class="filter-bar" role="group" aria-label="Gallery filters">
-          <button type="button" class="filter-btn active" data-filter="all">All</button>
-          <button type="button" class="filter-btn" data-filter="screenshots">Screenshots</button>
-          <button type="button" class="filter-btn" data-filter="gif">GIF</button>
-          <button type="button" class="filter-btn" data-filter="video">Video</button>
-        </div>
-
-        <div class="gallery-grid">
-          <figure class="media-card" id="gallery-shot-card" style="margin:0;">
-            <button type="button" class="media-thumb-btn" id="open-lightbox-screenshot" aria-label="Enlarge macOS screenshot">
-              <img id="gallery-screenshot-img" src="../assets/screenshot-macos.png" loading="lazy" alt="gooose 在 macOS 桌面實際運行的截圖" />
-            </button>
-            <figcaption class="media-caption">
-              <h3 data-i18n="gallery.shotTitle">macOS 桌面實機截圖</h3>
-              <p data-i18n="gallery.shotDesc">取自 li-bao/gooose 的真實運行畫面（點擊可放大檢視，按 ESC 關閉）。</p>
-            </figcaption>
-          </figure>
-
-          <div class="missing-media-panel" id="gallery-missing-card">
-            <h3 data-i18n="gallery.missingTitle">待補齊的影音素材清單</h3>
-            <p class="section-desc" style="font-size:0.92rem;" data-i18n="gallery.missingDesc">
-              目前桌面程式 Repository 尚無以下影音檔案，待製作完成後可直接加入本區：
-            </p>
-            <ul class="missing-list" id="missing-media-list"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Download Center -->
-    <section class="section" id="download">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="dl.eyebrow">下載中心</span>
-          <h2 class="section-title" data-i18n="dl.title">迎接你的桌面新室友</h2>
-          <p class="section-desc" data-i18n="dl.desc">所有版本號、下載連結、下載次數與 SHA-256 皆即時來自 GitHub Releases API。</p>
-        </div>
-
-        <div class="api-status-bar" role="status" aria-live="polite">
-          <span id="api-status-text" data-i18n="api.loading">正在從 GitHub 取得最新發布資料…</span>
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-api" data-i18n="api.refresh">重新整理</button>
-        </div>
-
-        <div class="download-grid">
-          <div class="download-box">
-            <h3 style="font-size:1.4rem;" id="dl-release-title" data-i18n="dl.loadingTitle">正在載入最新版本…</h3>
-            <div class="dl-meta-row">
-              <span class="dl-badge"><span data-i18n="dl.version">版本：</span><strong id="dl-version">—</strong></span>
-              <span class="dl-badge"><span data-i18n="dl.date">發布日期：</span><strong id="dl-date">—</strong></span>
-              <span class="dl-badge"><span data-i18n="dl.size">大小：</span><strong id="dl-size">—</strong></span>
-              <span class="dl-badge"><span data-i18n="dl.downloads">下載次數：</span><strong id="dl-count">—</strong></span>
-            </div>
-
-            <div class="dl-actions">
-              <a class="btn btn-primary" id="btn-dl-arm64" href="https://github.com/li-bao/gooose/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="dl.btnArm">下載 Apple Silicon (.dmg)</a>
-              <a class="btn btn-secondary" id="btn-dl-intel" href="#" style="display:none;" data-i18n="dl.btnIntel">下載 Intel Mac</a>
-              <a class="btn btn-secondary" href="https://github.com/li-bao/gooose/releases" target="_blank" rel="noopener noreferrer" data-i18n="dl.btnAll">GitHub Releases</a>
-            </div>
-
-            <p style="margin:8px 0 0;color:var(--muted);font-size:0.9rem;" data-i18n="dl.armOnlyNote">
-              目前僅提供 Apple Silicon（arm64）原生版本，暫無 Intel Mac（x86_64）建置檔案。
-            </p>
-
-            <div class="sha-box">
-              <div>
-                <strong data-i18n="dl.shaLabel">SHA-256：</strong>
-                <code id="dl-sha256">—</code>
-              </div>
-              <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-sha" disabled data-i18n="dl.copySha">複製</button>
-            </div>
-
-            <div class="notice-box">
-              <strong data-i18n="dl.signTitle">⚠️ 簽章與公證說明（誠實揭露）</strong>
-              <p style="margin:6px 0 0;" data-i18n="dl.signBody">
-                gooose 目前採 Ad-hoc 本機簽章（尚未經 Apple Developer ID 公證）。首次開啟若遇到 macOS Gatekeeper 提示，請在「系統設定 → 隱私權與安全性」點擊「強制打開」，或對 App 按右鍵選「打開」，亦可執行：
-              </p>
-              <pre><code>xattr -cr "/Applications/gooose.app"</code></pre>
-            </div>
-          </div>
-
-          <div class="download-box">
-            <h3 style="font-size:1.25rem;margin-bottom:12px;" data-i18n="dl.guideTitle">安裝說明與系統需求</h3>
-            <ul style="padding-left:18px;margin:0 0 18px;color:var(--muted);display:grid;gap:8px;" id="dl-install-steps"></ul>
-            <h4 style="font-size:1rem;margin-bottom:8px;" data-i18n="dl.notesTitle">最新版本說明（Release Notes）</h4>
-            <div class="release-body-raw" id="dl-release-notes">…</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Docs -->
-    <section class="section" id="docs">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="docs.eyebrow">使用手冊</span>
-          <h2 class="section-title" data-i18n="docs.title">完整文件</h2>
-          <p class="section-desc" data-i18n="docs.desc">依據 li-bao/gooose 實際程式碼與官方文件撰寫，支援搜尋與一鍵複製指令。</p>
-        </div>
-
-        <div class="docs-shell">
-          <div class="docs-sidebar">
-            <input type="search" class="search-input" id="docs-search" placeholder="Search docs…" aria-label="Search documentation" />
-            <div class="docs-tabs" role="tablist" aria-label="Documentation topics" id="docs-tablist"></div>
-          </div>
-          <div>
-            <div class="docs-progress-track" aria-hidden="true">
-              <div class="docs-progress-fill" id="docs-progress-fill"></div>
-            </div>
-            <div class="docs-panel" role="tabpanel" id="docs-tabpanel" tabindex="0"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="faq.eyebrow">疑難排解</span>
-          <h2 class="section-title" data-i18n="faq.title">常見問題 FAQ</h2>
-          <p class="section-desc" data-i18n="faq.desc">支援關鍵字搜尋與分類篩選，快速找到安裝、權限與資料儲存解答。</p>
-        </div>
-
-        <div class="faq-controls">
-          <input type="search" class="search-input" id="faq-search" style="max-width:340px;" placeholder="Search FAQ…" aria-label="Search FAQ" />
-          <select class="pg-select" id="faq-cat" aria-label="FAQ Category">
-            <option value="all">All Categories</option>
-            <option value="general">General</option>
-            <option value="install">Install</option>
-            <option value="features">Features</option>
-            <option value="privacy">Privacy &amp; Permissions</option>
-          </select>
-        </div>
-
-        <div class="faq-list" id="faq-list"></div>
-      </div>
-    </section>
-
-    <!-- Changelog -->
-    <section class="section" id="changelog">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="cl.eyebrow">版本紀錄</span>
-          <h2 class="section-title" data-i18n="cl.title">Changelog</h2>
-          <p class="section-desc" data-i18n="cl.desc">自動同步 GitHub Releases API。未人工翻譯的 Release Notes 會明確標示原文語言。</p>
-        </div>
-        <div class="changelog-list" id="changelog-list"></div>
-      </div>
-    </section>
-
-    <!-- Security & Privacy -->
-    <section class="section" id="security">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="sec.eyebrow">安全與隱私</span>
-          <h2 class="section-title" data-i18n="sec.title">Security &amp; Privacy</h2>
-          <p class="section-desc" data-i18n="sec.desc">清楚區分本官方網站與 macOS 桌面應用程式的實際行為，不誇大保證。</p>
-        </div>
-
-        <div class="two-col">
-          <article class="policy-card">
-            <h3 data-i18n="sec.cardTitle">🛡️ 安全性說明（Security）</h3>
-            <ul id="security-list"></ul>
-          </article>
-          <article class="policy-card" id="privacy">
-            <h3 data-i18n="priv.cardTitle">🔒 隱私權說明（Privacy）</h3>
-            <ul id="privacy-list"></ul>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
+  <main id="page-root"></main>
 
   <footer>
     <div class="wrap footer-grid">
@@ -481,11 +126,24 @@
         <a href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://github.com/li-bao/gooose/releases" target="_blank" rel="noopener noreferrer">Releases</a>
         <a href="https://github.com/li-bao/gooose/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-        <a href="#security">Security</a>
-        <a href="#privacy">Privacy</a>
+        <a href="/changelog/" data-route="changelog" data-i18n="nav.changelog">更新日誌</a>
+        <a href="/security/" data-route="security" data-i18n="nav.security">安全與隱私</a>
+        <a href="/goose-ai/" data-route="goose-ai">goooseAI</a>
       </div>
     </div>
   </footer>
+
+  <!-- Global Search Modal -->
+  <div class="search-modal" id="global-search-modal" role="dialog" aria-modal="true" aria-label="Global Search">
+    <div class="search-modal-dialog">
+      <div class="search-modal-head">
+        <span aria-hidden="true">🔍</span>
+        <input type="search" class="search-modal-input" id="global-search-input" placeholder="Search Docs, FAQ, Features, Changelog…" aria-label="Search site" />
+        <button type="button" class="btn btn-secondary btn-sm" id="global-search-close">ESC</button>
+      </div>
+      <div class="search-modal-results" id="global-search-results"></div>
+    </div>
+  </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
@@ -506,6 +164,8 @@
   <script src="../js/hero-goose.js"></script>
   <script src="../js/playground.js"></script>
   <script src="../js/games.js"></script>
+  <script src="../js/pages.js"></script>
+  <script src="../js/router.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -545,9 +545,14 @@
       }
     }
 
+    let rafId = null;
     let last = performance.now();
     let secondAcc = 0;
     function loop(now) {
+      if (!document.body.contains(canvas)) {
+        rafId = null;
+        return;
+      }
       const dt = Math.min(0.035, (now - last) / 1000);
       last = now;
 
@@ -617,7 +622,7 @@
       ctx.textBaseline = 'alphabetic';
 
       geese.forEach(drawGooseActor);
-      requestAnimationFrame(loop);
+      rafId = requestAnimationFrame(loop);
     }
 
     // Pointer Drag & Throw
@@ -702,6 +707,8 @@
       combo = 0;
       playSeconds = 0;
       running = true;
+      const pauseBtn = document.getElementById('pg-pause');
+      if (pauseBtn) pauseBtn.textContent = document.documentElement.lang === 'en' ? 'Pause' : '暫停';
       createGoose(W * 0.45, H - 60);
       updateHud();
     });
@@ -729,7 +736,12 @@
     createGoose(W * 0.45, H - 60);
     updateCounterUI();
     updateHud();
-    requestAnimationFrame(loop);
+    rafId = requestAnimationFrame(loop);
+
+    return function destroyPlayground() {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', resize);
+    };
   }
 
   global.initPlayground2 = initPlayground2;

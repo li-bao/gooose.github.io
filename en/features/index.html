@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-default-lang="en" data-initial-route="features" data-asset-root="../../">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#FFFBF2" id="meta-theme-color" />
+  <title>Features — gooose</title>
+  <meta name="description" content="Explore real gooose features: cursor stealing, Goose Family, meme system, custom sounds, and sticky notes." />
+  <link rel="canonical" href="https://gooose.runs-at.dev/en/features/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/features/" />
+  <link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/features/" />
+  <link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/features/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="gooose" />
+  <meta property="og:title" content="Features — gooose" />
+  <meta property="og:description" content="Explore real gooose features: cursor stealing, Goose Family, meme system, custom sounds, and sticky notes." />
+  <meta property="og:url" content="https://gooose.runs-at.dev/en/features/" />
+  <meta property="og:image" content="https://gooose.runs-at.dev/assets/screenshot-macos.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23F6C945'/%3E%3Cpath d='M22 44c0-9 5-14 11-16V18c0-5 4-9 9-9s8 3.5 8 7.5c0 2.5-1.4 4.5-3.4 5.5l6.4 2.2c1.5.5 1.5 2.6 0 3.1l-6.6 2.1c-.4 5.5-2.6 10.6-7.4 14.6-4.5 3.7-17 3.7-17 0z' fill='%23FFFFFF' stroke='%232B201A' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M47 21.5l7.5 2.5-7.5 2.5z' fill='%23F27D3B' stroke='%232B201A' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='43' cy='16.5' r='2.2' fill='%232B201A'/%3E%3C/svg%3E" />
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('gooose-theme') || 'system';
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var resolved = saved === 'system' ? (prefersDark ? 'dark' : 'light') : saved;
+        if (resolved !== 'dark' && resolved !== 'light') resolved = 'light';
+        document.documentElement.dataset.themeMode = saved;
+        document.documentElement.dataset.theme = resolved;
+        var meta = document.getElementById('meta-theme-color');
+        if (meta) meta.setAttribute('content', resolved === 'dark' ? '#191310' : '#FFFBF2');
+      } catch (e) {
+        document.documentElement.dataset.themeMode = 'system';
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#page-root" data-i18n="skip">跳至主要內容</a>
+
+  <div class="loading-goose-pill hidden" id="loading-goose-pill" role="status" aria-live="polite">
+    <span aria-hidden="true">🪿</span>
+    <span data-i18n="loading.pill">gooose 正在搬運 GitHub 資料…</span>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <header class="topbar">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/" data-route="home" id="brand-logo" aria-label="gooose Home">
+        <span class="brand-badge" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+            <path d="M16 46c0-9 5-14 11-16V18c0-5 4-9 9-9s8 3.5 8 7.5c0 2.5-1.4 4.5-3.4 5.5l6.4 2.2c1.5.5 1.5 2.6 0 3.1l-6.6 2.1c-.4 5.5-2.6 10.6-7.4 14.6-4.5 3.7-17 3.7-17 0z" fill="#FFFFFF" stroke="#2B201A" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M41 21.5l8 2.5-8 2.5z" fill="#F27D3B" stroke="#2B201A" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="37" cy="16.5" r="2.5" fill="#2B201A"/>
+          </svg>
+        </span>
+        <span>Gooose</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/" data-route="home" data-i18n="nav.home">首頁</a></li>
+          <li><a href="/features/" data-route="features" data-i18n="nav.features">特色</a></li>
+          <li><a href="/playground/" data-route="playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
+          <li><a href="/games/" data-route="games" data-i18n="nav.games">小遊戲</a></li>
+          <li><a href="/gallery/" data-route="gallery" data-i18n="nav.gallery">畫面</a></li>
+          <li><a href="/download/" data-route="download" data-i18n="nav.download">下載</a></li>
+          <li><a href="/docs/" data-route="docs" data-i18n="nav.docs">文件</a></li>
+          <li><a href="/faq/" data-route="faq" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="/goose-ai/" data-route="goose-ai" data-i18n="nav.gooseAi">goooseAI</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="pill-switch" id="global-search-btn" aria-label="Search">🔍 <span class="hide-xs" data-i18n="nav.search">搜尋</span></button>
+        <button type="button" class="pill-switch" id="cursor-switch" aria-pressed="true" title="Toggle Goose Cursor">🪿</button>
+        <button type="button" class="pill-switch" id="sound-switch" aria-pressed="false" title="Toggle Sound">🔇</button>
+        <button type="button" class="pill-switch" id="motion-switch" aria-pressed="false" title="Toggle Reduced Motion">✨</button>
+        <button type="button" class="pill-switch" id="lang-switch" aria-label="Switch language">
+          <span id="lang-switch-label">EN</span>
+        </button>
+        <button type="button" class="pill-switch" id="theme-switch" aria-label="Switch theme">
+          <span id="theme-icon" aria-hidden="true">🖥️</span>
+          <span id="theme-label">系統</span>
+        </button>
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-drawer" data-i18n="nav.menu">選單</button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobile-drawer">
+      <ul>
+        <li><a href="/" data-route="home" data-i18n="nav.home">首頁</a></li>
+        <li><a href="/features/" data-route="features" data-i18n="nav.features">特色</a></li>
+        <li><a href="/playground/" data-route="playground" data-i18n="nav.playground">遊樂場 2.0</a></li>
+        <li><a href="/games/" data-route="games" data-i18n="nav.games">小遊戲</a></li>
+        <li><a href="/gallery/" data-route="gallery" data-i18n="nav.gallery">畫面</a></li>
+        <li><a href="/download/" data-route="download" data-i18n="nav.download">下載</a></li>
+        <li><a href="/docs/" data-route="docs" data-i18n="nav.docs">文件</a></li>
+        <li><a href="/faq/" data-route="faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="/changelog/" data-route="changelog" data-i18n="nav.changelog">更新日誌</a></li>
+        <li><a href="/security/" data-route="security" data-i18n="nav.security">安全與隱私</a></li>
+        <li><a href="/goose-ai/" data-route="goose-ai" data-i18n="nav.gooseAi">goooseAI</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="page-root"></main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button type="button" class="secret-footer-goose" id="secret-footer-goose" aria-label="Secret Footer Goose">🪿</button>
+        <div>
+          <strong style="font-size:1.05rem;">gooose</strong>
+          <p style="margin:3px 0 0;color:var(--muted);font-size:0.88rem;" data-i18n="footer.copy">
+            Created by Li-bao · gooose 開源 macOS 桌面寵物 · 託管於 GitHub Pages
+          </p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/li-bao/gooose" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/li-bao/gooose/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+        <a href="https://github.com/li-bao/gooose/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="/changelog/" data-route="changelog" data-i18n="nav.changelog">更新日誌</a>
+        <a href="/security/" data-route="security" data-i18n="nav.security">安全與隱私</a>
+        <a href="/goose-ai/" data-route="goose-ai">goooseAI</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Search Modal -->
+  <div class="search-modal" id="global-search-modal" role="dialog" aria-modal="true" aria-label="Global Search">
+    <div class="search-modal-dialog">
+      <div class="search-modal-head">
+        <span aria-hidden="true">🔍</span>
+        <input type="search" class="search-modal-input" id="global-search-input" placeholder="Search Docs, FAQ, Features, Changelog…" aria-label="Search site" />
+        <button type="button" class="btn btn-secondary btn-sm" id="global-search-close">ESC</button>
+      </div>
+      <div class="search-modal-results" id="global-search-results"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-dialog">
+      <div class="lightbox-bar">
+        <strong id="lightbox-title">Preview</strong>
+        <button type="button" class="btn btn-secondary btn-sm" id="lightbox-close" data-i18n="lb.close">關閉 (ESC)</button>
+      </div>
+      <div id="lightbox-media-wrap"></div>
+    </div>
+  </div>
+
+  <script src="../../js/sound.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/github.js"></script>
+  <script src="../../js/cursor.js"></script>
+  <script src="../../js/gooose-ai.js"></script>
+  <script src="../../js/hero-goose.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/games.js"></script>
+  <script src="../../js/pages.js"></script>
+  <script src="../../js/router.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

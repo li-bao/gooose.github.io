@@ -69,8 +69,13 @@
       });
     }
 
+    let rafId = null;
     let last = performance.now();
     function loop(now) {
+      if (!document.body.contains(canvas)) {
+        rafId = null;
+        return;
+      }
       const dt = Math.min(0.04, (now - last) / 1000);
       last = now;
 
@@ -168,7 +173,7 @@
       }
       ctx.textAlign = 'left';
       ctx.textBaseline = 'alphabetic';
-      requestAnimationFrame(loop);
+      rafId = requestAnimationFrame(loop);
     }
 
     canvas.addEventListener('pointermove', (e) => {
@@ -177,20 +182,29 @@
       player.x = Math.max(30, Math.min(W - 30, e.clientX - rect.left));
     }, { passive: true });
 
-    window.addEventListener('keydown', (e) => {
+    function onKeyDown(e) {
       if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keys.left = true;
       if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.right = true;
-    });
-    window.addEventListener('keyup', (e) => {
+    }
+    function onKeyUp(e) {
       if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keys.left = false;
       if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.right = false;
-    });
+    }
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
 
     document.getElementById('bg-start')?.addEventListener('click', startGame);
     window.addEventListener('resize', resize);
     resize();
     updateUI();
-    requestAnimationFrame(loop);
+    rafId = requestAnimationFrame(loop);
+
+    return function destroyBread() {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+    };
   }
 
   /* =====================================
@@ -309,10 +323,17 @@
     });
 
     startMemory();
+    return function destroyMemory() {
+      clearInterval(timerId);
+    };
   }
 
   global.initMiniGames = function () {
-    initBreadCollector();
-    initGooseMemory();
+    const d1 = initBreadCollector();
+    const d2 = initGooseMemory();
+    return function destroyAllGames() {
+      if (typeof d1 === 'function') d1();
+      if (typeof d2 === 'function') d2();
+    };
   };
 })(window);

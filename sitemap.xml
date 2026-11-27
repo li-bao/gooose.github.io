@@ -7,7 +7,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/" />
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gooose.runs-at.dev/en/</loc>
@@ -15,6 +14,145 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/" />
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/features/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/features/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/features/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/features/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/features/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/features/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/features/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/features/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/playground/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/playground/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/playground/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/playground/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/playground/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/playground/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/playground/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/playground/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/games/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/games/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/games/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/games/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/games/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/games/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/games/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/games/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/gallery/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/gallery/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/gallery/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/gallery/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/gallery/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/gallery/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/gallery/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/gallery/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/download/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/download/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/download/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/download/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/download/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/download/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/download/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/download/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/docs/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/docs/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/docs/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/docs/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/docs/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/docs/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/docs/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/docs/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/faq/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/faq/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/faq/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/faq/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/changelog/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/changelog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/changelog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/changelog/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/changelog/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/changelog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/changelog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/changelog/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/security/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/security/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/security/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/security/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/security/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/security/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/security/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/security/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/goose-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/goose-ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/goose-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/goose-ai/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://gooose.runs-at.dev/en/goose-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://gooose.runs-at.dev/goose-ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gooose.runs-at.dev/en/goose-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gooose.runs-at.dev/goose-ai/" />
+    <changefreq>weekly</changefreq>
   </url>
 </urlset>
